@@ -7,7 +7,7 @@ cache:
     - vendor/
 
 stages:
-  - deploy
+  - develop
 
 before_script:
   - apk add --update openssh-client rsync
@@ -21,14 +21,14 @@ before_script:
   - composer install
   - npm install
 
-deploy:
-  stage: deploy
+develop:
+  stage: develop
   artifacts:
     paths:
       - dist/
   only:
-    - master
+    - develop
   script:
     - npm run deploy
-    - rsync -a --delete --progress --rsh='ssh -p4975' dist/templates/sso/ sso@intern.redweb.dk:/home/sso/public_html/templates/sso
+    - rsync -a --delete --progress --rsh='ssh -p4975' dist/templates/sso/ dev_api@dev.api.r.redweb.digital:/home/dev_api/public_html/templates/sso
 
