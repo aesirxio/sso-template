@@ -23,6 +23,8 @@ before_script:
 
 develop:
   stage: develop
+  environment:
+    name: develop
   artifacts:
     paths:
       - dist/
