@@ -8,6 +8,7 @@ cache:
 
 stages:
   - develop
+  - live
 
 before_script:
   - apk add --update openssh-client rsync
