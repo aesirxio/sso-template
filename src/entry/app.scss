@@ -66,6 +66,9 @@ body {
     main {
       padding: 20px;
       background-color: $white;
+      .login {
+        min-width: 500px;
+      }
       .control-group {
         margin-bottom: 20px;
         position: relative;
