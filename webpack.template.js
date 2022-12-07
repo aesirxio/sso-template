@@ -85,11 +85,11 @@ module.exports = (env, argv) => {
                   "/templates/" +
                   process.env.projectname +
                   "/html",
+                options: {
+                  force: true,
+                },
               },
-              {
-                source: path.resolve(__dirname, "./language"),
-                destination: templatePath + "/language",
-              },
+
               {
                 source: path.resolve(__dirname, "./template/helper.php"),
                 destination:
@@ -128,21 +128,22 @@ module.exports = (env, argv) => {
                   process.env.projectname +
                   "/template_thumbnail.png",
               },
-              {
-                source: path.resolve(__dirname, "./jce/template.css"),
-                destination:
-                  templatePath +
-                  "/templates/" +
-                  process.env.projectname +
-                  "/css/",
-              },
             ],
 
             delete: [path.resolve(__dirname, "./jce")],
           },
           onStart: {
             delete: [
-              templatePath + "/templates/" + process.env.projectname + "/html",
+              {
+                source:
+                  templatePath +
+                  "/templates/" +
+                  process.env.projectname +
+                  "/html",
+                options: {
+                  force: true,
+                },
+              },
             ],
           },
         },
