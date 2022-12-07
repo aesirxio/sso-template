@@ -352,7 +352,7 @@ class TplRedwebHelper
             }
         }
 
-        $detect = new Mobile_Detect;
+        $detect = new \Detection\MobileDetect;
 
         if (isset($json[$name . '-tablet.css']) && $detect->isTablet()) {
             self::$styles[md5($name . '-tablet.css')] = $json[$name . '-tablet.css'];
@@ -362,7 +362,7 @@ class TplRedwebHelper
             if (isset($json[$name . '-tablet.css'])) {
                 self::$styles[md5($name . '-tablet.css')] = $json[$name . '-tablet.css'];
             }
-            
+
             self::$styles[md5($name . '-desktop.css')] = $json[$name . '-desktop.css'];
         }
     }

@@ -32,18 +32,7 @@ tplRedwebHelper::setMetadata();
                         <jdoc:include type="modules" name="logo" style="xhtml" />
                     </div>
                 <?php endif; ?>
-                <?php if ($this->countModules('main-menu')) : ?>
-                    <div class="w-auto ps-5">
-                        <jdoc:include type="modules" name="main-menu" style="xhtml" />
-                    </div>
-                <?php endif; ?>
-                <button class="me-3 ms-auto w-auto btn btn-primary rounded-pill px-4 py-2 text-uppercase fw-bold" data-toggle="modal" data-target="#loginForm">Log ind</button>
-                <?php if ($this->countModules('top-right')) : ?>
-                    <div id="top-right" class="ms-auto">
-                        <jdoc:include type="modules" name="top-right" style="xhtml" />
-                    </div>
-                <?php endif; ?>
-                </div>
+
             </div>
         </header>
 
@@ -76,40 +65,8 @@ tplRedwebHelper::setMetadata();
 
             <!-- Footer -->
             <footer class="bg-red text-white pt-5">
-                <div class="container">
-                    <div id="footer-wrap" class="pt-3 pb-5 row">
-                        <div class="col-lg-3">{modulepos footer-logo}</div>
-                        <div class="col-lg-9">
-                            <div class="d-lg-flex gap-4 justify-content-between">
-                                <jdoc:include type="modules" name="footer" style="xhtml" />
-                            </div>
-                        </div>
-                        <div class="text-end">
-                            <a class="f-merri text-white text-decoration-none fw-bold d-inline-flex align-items-center" href="#" id="scroll-top">
-                                Til toppen
-                                <span class="ms-3 d-inline-flex justify-content-center align-items-center bg-white text-danger rounded-circle"></span>
-                            </a>
-                        </div>
-                    </div>
-                    <div id="copyright">
-                        <div class="f-merri py-4 d-flex align-items-center justify-content-between">
-                            <jdoc:include type="modules" name="copyright" style="xhtml" />
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="loginForm" tabindex="-1" role="dialog" aria-labelledby="loginFormTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content border-0">
-                    <div class="modal-body px-4 pb-5 pt-4 shadow-lg">
-                        <span class="close ms-auto" data-dismiss="modal" aria-label="Close" aria-hidden="true">&times;</span>
-                        <jdoc:include type="modules" name="modal" style="xhtml" />
-                    </div>
-                </div>
-            </div>
+            </footer>
         </div>
 
         <jdoc:include type="modules" name="debug" style="xhtml" />
