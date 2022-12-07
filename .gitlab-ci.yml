@@ -34,3 +34,15 @@ develop:
     - yarn run deploy
     - rsync -a --delete --progress --rsh='ssh -p4975' dist/templates/sso/ dev_api@dev.api.r.redweb.digital:/home/dev_api/public_html/templates/sso
 
+live:
+  stage: live
+  environment:
+    name: live
+  artifacts:
+    paths:
+      - dist/
+  only:
+    - master
+  script:
+    - yarn run release
+    - rsync -a --delete --progress --rsh='ssh -p4975' dist/templates/sso/ aesirx@web1.aesirx.io:/home/aesirx/domains/api.aesirx.io/public_html/templates/sso
