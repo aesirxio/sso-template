@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "https://www.joomla.org/xml/dtd/1.6/template-install.dtd">
+<extension version="3.1" type="template" client="site" method="upgrade">
+	<name><%= projectname %></name>
+	<creationDate>Sep 2022</creationDate>
+	<author>AesirX</author>
+	<authorEmail>support@r-digital.tech</authorEmail>
+	<authorUrl>https://r-digital.tech/</authorUrl>
+	<copyright>Copyright (C) 2005 - 2022 Open Source Matters, Inc. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<version>1.1.0</version>
+	<description>SSO AesirX Template</description>
+
+	<files>
+		<folder>favicons</folder>
+		<folder>fonts</folder>
+		<folder>html</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<folder>vendor</folder>
+		<filename>manifest.json</filename>
+		<filename>component.php</filename>
+		<filename>helper.php</filename>
+		<filename>index.php</filename>
+		<filename>templateDetails.xml</filename>
+		<filename>template_preview.png</filename>
+		<filename>template_thumbnail.png</filename>
+	</files>
+
+	<positions>
+		<position>debug</position>
+		<position>header</position>
+		<position>logo</position>
+		<position>top-right</position>
+		<position>main-menu</position>
+		<position>above-content</position>
+		<position>below-content</position>
+		<position>above-main</position>
+		<position>below-main</position>
+		<position>footer</position>
+		<position>copyright</position>
+		<position>modal</position>
+		<position>search</position>
+	</positions>
+
+	<config>
+
+	</config>
+</extension>
