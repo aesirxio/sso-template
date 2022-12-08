@@ -8,22 +8,22 @@ const ConnectMetamask = () => {
 
   return (
     <div>
-      {connectors.map((connector) => (
-        <button
-          disabled={!connector.ready}
-          key={connector.id}
-          onClick={() => connect({ connector })}
-          className="btn btn-primary"
-        >
-          {connector.name}
-          {!connector.ready && " (unsupported)"}
-          {isLoading &&
-            connector.id === pendingConnector?.id &&
-            " (connecting)"}
-        </button>
-      ))}
-
-      {error && <div>{error.message}</div>}
+      {connectors.map(
+        (connector) =>
+          connector.ready && (
+            <button
+              disabled={!connector.ready}
+              key={connector.id}
+              onClick={() => connect({ connector })}
+              className="btn btn-primary"
+            >
+              {connector.name}
+              {isLoading &&
+                connector.id === pendingConnector?.id &&
+                " (connecting)"}
+            </button>
+          )
+      )}
     </div>
   );
 };
