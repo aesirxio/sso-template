@@ -11,9 +11,8 @@ defined('_JEXEC') or die;
 
 JHtml::_('behavior.keepalive');
 JHtml::_('behavior.formvalidator');
-
 ?>
-<div class="login<?php echo $this->pageclass_sfx; ?>">
+<div class="body-login<?php echo $this->pageclass_sfx; ?> ">
 	<?php if ($this->params->get('show_page_heading')) : ?>
 		<div class="page-header">
 			<h1>
@@ -33,9 +32,13 @@ JHtml::_('behavior.formvalidator');
 	<?php if (($this->params->get('logindescription_show') == 1 && str_replace(' ', '', $this->params->get('login_description')) != '') || $this->params->get('login_image') != '') : ?>
 		</div>
 	<?php endif; ?>
-
-	<div id="providerlogin"></div>
-
+	<h1>
+		Welcome to <img src="https://api.aesirx.io/images/Logo_aesirx.jpg"/>  SSO <br/>
+					Sign In to getting started.
+	</h1>
+	<div class="login">
+	<div class="masklogin" id="providerlogin"></div>
+	<p class="txt_or"><span>or</span></p>
 	<form action="<?php echo JRoute::_('index.php?option=com_users&task=user.login'); ?>" method="post" class="form-validate form-horizontal well">
 		<fieldset>
 			<?php echo $this->form->renderFieldset('credentials'); ?>
@@ -66,4 +69,5 @@ JHtml::_('behavior.formvalidator');
 			<?php echo JHtml::_('form.token'); ?>
 		</fieldset>
 	</form>
+	</div>
 </div>
