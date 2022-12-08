@@ -57,17 +57,55 @@
   -moz-osx-font-smoothing: grayscale;
 }
 body {
-  background-color: #f0f3fb;
+  background-color :$white;
   .body-wrap {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     main {
-      padding: 20px;
-      background-color: $white;
+      .body-login
+      {
+        h1
+        {
+          text-align: center;
+        } 
+        .txt_or {
+          position: relative;
+          font-size: 14px;
+          text-align: center;
+          margin: 40px 0 25px;
+          &:before {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 1px;
+            top: 49%;
+            left: 0;
+            background-color: #D4DCE8;
+          }
+          span {
+            position: relative;
+            background-color: $white;
+            text-transform: uppercase;
+            z-index: 2;
+            padding: 0 10px;
+            color:#D4DCE8;
+          }
+        }
+        .logo-login
+        {
+          display: inline-block;
+          margin: 5px 10px;
+          .custom
+          {
+            display: flex;
+          }
+        }
+      }
       .login {
         min-width: 500px;
+        padding: 20px;
       }
       .control-group {
         margin-bottom: 20px;
@@ -103,6 +141,7 @@ body {
                 background-image: escape-svg(
                   $form-check-input-checked-bg-image
                 );
+                background-color: $success;
               }
               outline: 0;
               background-color: $white;
@@ -112,9 +151,9 @@ body {
               background-repeat: no-repeat;
               background-size: contain;
               border: 1px solid rgba(0, 0, 0, 0.25);
-              height: 1em;
+              height: 1.5em;
               vertical-align: top;
-              width: 1em;
+              width: 1.5em;
             }
           }
           #remember {
@@ -166,4 +205,25 @@ body {
     $success /*hover border*/,
     $white /*hover text color*/
   );
+}
+.masklogin
+{
+  .btn-primary
+  {
+    width: 100%;
+    outline: 0;
+    padding: 13px 0;
+    @include button-variant(
+      $white /*background*/,
+      #DEDEDE /*border*/,
+      $black /*text color*/,
+      lighten($success, 5%) /*hover background*/,
+      $success /*hover border*/,
+      $white /*hover text color*/
+    );
+  }
+  img
+  {
+    margin-right: 10px;
+  }
 }

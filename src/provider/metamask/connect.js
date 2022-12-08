@@ -1,11 +1,11 @@
 import React from "react";
+import Logometamask from "./../../images/Icon.png";
 
 import { useConnect } from "wagmi";
 
 const ConnectMetamask = () => {
   const { connect, connectors, error, isLoading, pendingConnector } =
     useConnect();
-
   return (
     <div>
       {connectors.map(
@@ -17,7 +17,8 @@ const ConnectMetamask = () => {
               onClick={() => connect({ connector })}
               className="btn btn-primary"
             >
-              {connector.name}
+               <img src={Logometamask} alt="logo-metamask"/>
+              Login via {connector.name}
               {isLoading &&
                 connector.id === pendingConnector?.id &&
                 " (connecting)"}
