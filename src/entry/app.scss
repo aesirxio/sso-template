@@ -141,6 +141,7 @@ body {
                 background-image: escape-svg(
                   $form-check-input-checked-bg-image
                 );
+                background-color: $success;
               }
               outline: 0;
               background-color: $white;
@@ -150,9 +151,9 @@ body {
               background-repeat: no-repeat;
               background-size: contain;
               border: 1px solid rgba(0, 0, 0, 0.25);
-              height: 1em;
+              height: 1.5em;
               vertical-align: top;
-              width: 1em;
+              width: 1.5em;
             }
           }
           #remember {
