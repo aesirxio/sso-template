@@ -33,8 +33,8 @@ JHtml::_('behavior.formvalidator');
 		</div>
 	<?php endif; ?>
 	<h1>
-		Welcome to <img src="https://api.aesirx.io/images/Logo_aesirx.jpg"/>  SSO <br/>
-					Sign In to getting started.
+		Welcome to<div class="logo-login"><?php echo JHTML::_('content.prepare', '{loadposition logo-login}') ?></div>SSO 
+		<br/>Sign In to getting started.
 	</h1>
 	<div class="login">
 	<div class="masklogin" id="providerlogin"></div>

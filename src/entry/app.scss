@@ -93,6 +93,15 @@ body {
             color:#D4DCE8;
           }
         }
+        .logo-login
+        {
+          display: inline-block;
+          margin: 5px 10px;
+          .custom
+          {
+            display: flex;
+          }
+        }
       }
       .login {
         min-width: 500px;
