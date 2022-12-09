@@ -4,7 +4,8 @@
   "description": "Webpack config for Joomla template",
   "private": true,
   "scripts": {
-    "build": "webpack --mode=development",
+    "build": "yarn run build:lib && webpack --mode=development",
+    "build:lib": "cd node_modules/aesirx-dma-lib && yarn install && yarn run build && cd ../../",
     "release": "webpack --mode=production  --env deploy=true",
     "watch": "webpack --watch --mode=development",
     "deploy": "webpack --mode=development --env deploy=true",
@@ -14,6 +15,7 @@
   "author": "AesirX",
   "license": "ISC",
   "dependencies": {
+    "aesirx-dma-lib": "aesirxio/dma-lib",
     "bootstrap": "^5.2.3",
     "ethers": "^5.7.2",
     "react": "^18.2.0",
@@ -57,7 +59,9 @@
     "webpack-dev-server": "^4.11.1",
     "webpack-font-preload-plugin": "^1.5.0",
     "webpack-remove-empty-scripts": "^1.0.1",
-    "yarn-upgrade-all": "^0.7.1"
+    "yarn-upgrade-all": "^0.7.1",
+    "axios": "^1.2.1",
+    "query-string": "^7.1.3"
   },
   "browserslist": [
     "> 1%",

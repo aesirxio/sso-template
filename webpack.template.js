@@ -12,6 +12,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const RemoveEmptyScriptsPlugin = require("webpack-remove-empty-scripts");
 const CriticalCssPlugin = require("critical-css-webpack-plugin");
 const FontPreloadPlugin = require("webpack-font-preload-plugin");
+const { DefinePlugin } = require("webpack");
 
 const {
   queryData,
@@ -44,6 +45,9 @@ module.exports = (env, argv) => {
   var config = {
     entry: entryData,
     plugins: [
+      new DefinePlugin({
+        process: { env: JSON.stringify(process.env) },
+      }),
       new HtmlWebpackPlugin({
         inject: false,
         filename:
