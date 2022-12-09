@@ -11,6 +11,9 @@ defined('_JEXEC') or die;
 
 JHtml::_('behavior.keepalive');
 JHtml::_('behavior.formvalidator');
+// Get params
+$params         = JFactory::getApplication()->get("themeParams");
+$logo           = $params->get('logo');
 ?>
 <div class="body-login<?php echo $this->pageclass_sfx; ?> ">
 	<?php if ($this->params->get('show_page_heading')) : ?>
@@ -33,7 +36,7 @@ JHtml::_('behavior.formvalidator');
 		</div>
 	<?php endif; ?>
 	<h1>
-		Welcome to<div class="logo-login"><?php echo JHTML::_('content.prepare', '{loadposition logo-login}') ?></div>SSO 
+		Welcome to<div class="logo-login"><div class="custom"><img src="<?php echo $this->baseurl; ?>/<?php echo htmlspecialchars($logo, ENT_QUOTES); ?>"  alt="<?php echo htmlspecialchars($this->params->get('sitetitle')); ?>" /></div></div>SSO 
 		<br/>Sign In to getting started.
 	</h1>
 	<div class="login">
