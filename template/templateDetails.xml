@@ -42,8 +42,16 @@
 		<position>modal</position>
 		<position>search</position>
 	</positions>
-
 	<config>
-
+		<fields name="params">
+			<fieldset name="advanced">
+				<field 
+					name="logo"
+					type="media"
+					label="TPL_SSO_FIELD_LOGO_LABEL" 
+					description="TPL_SSO_FIELD_LOGO_DESC" 
+				/>
+			</fieldset>
+		</fields>
 	</config>
 </extension>
