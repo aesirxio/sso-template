@@ -11,9 +11,9 @@ const client = createClient({
 const ProviverLogin = () => {
   return (
     <>
-      <WagmiConfig client={client}>
+      {/* <WagmiConfig client={client}>
         <Metamask />
-      </WagmiConfig>
+      </WagmiConfig> */}
     </>
   );
 };
