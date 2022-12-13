@@ -49,6 +49,7 @@ module.exports = (env, argv) => {
         template: "./template/index.php",
         excludeAssets: [/.*./],
         realfavicons: true,
+        minify: false,
       }),
       new HtmlWebpackPlugin({
         inject: false,
@@ -60,6 +61,7 @@ module.exports = (env, argv) => {
         template: "./template/component.php",
         chunks: ["views.component"],
         excludeAssets: [/.*./],
+        minify: false,
       }),
       new HtmlWebpackPlugin({
         inject: false,
@@ -70,6 +72,7 @@ module.exports = (env, argv) => {
           "/templateDetails.xml",
         template: "./template/templateDetails.xml",
         templateParameters: process.env,
+        minify: false,
       }),
       new HtmlWebpackSkipAssetsPlugin(),
       new FileManagerPlugin({
