@@ -10,7 +10,6 @@ const HtmlWebpackSkipAssetsPlugin =
   require("html-webpack-skip-assets-plugin").HtmlWebpackSkipAssetsPlugin;
 const TerserPlugin = require("terser-webpack-plugin");
 const RemoveEmptyScriptsPlugin = require("webpack-remove-empty-scripts");
-const CriticalCssPlugin = require("critical-css-webpack-plugin");
 const FontPreloadPlugin = require("webpack-font-preload-plugin");
 
 const {
@@ -19,7 +18,6 @@ const {
   wwwDir,
   projectname,
   sassLoader,
-  sassCriticalLoader,
   imageLoader,
   fontLoader,
   jsLoader,
@@ -129,8 +127,6 @@ module.exports = (env, argv) => {
                   "/template_thumbnail.png",
               },
             ],
-
-            delete: [path.resolve(__dirname, "./jce")],
           },
           onStart: {
             delete: [
@@ -251,16 +247,11 @@ module.exports = (env, argv) => {
         filename: "css/" + name + ".css",
       }),
       new RealFaviconPlugin({
-        favicon: path.resolve(__dirname, "./src/favicon/favicon.jpg"),
+        favicon: path.resolve(__dirname, "./src/favicon/favicon.png"),
         faviconJson: path.resolve(__dirname, "./src/favicon/favicon.json"),
         publicPath: "/templates/" + process.env.projectname + "/favicon",
         outputPath:
           templatePath + "/templates/" + process.env.projectname + "/favicon",
-      }),
-      new CriticalCssPlugin({
-        base: templatePath + "/templates/" + process.env.projectname + "/",
-        src: "./template/index.php",
-        target: "css/critical.css",
       })
     );
   }
