@@ -232,7 +232,7 @@ body {
     @include button-variant(
       $blue /*background*/,
       #DEDEDE /*border*/,
-      $black /*text color*/,
+      $white /*text color*/,
       lighten($success, 5%) /*hover background*/,
       $success /*hover border*/,
       $white /*hover text color*/
