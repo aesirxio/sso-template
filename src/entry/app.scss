@@ -167,6 +167,9 @@ body {
           width: 100%;
           margin-top: 10px;
           padding: 15px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           &[title="Cancel"] {
             @include button-variant(
               $white /*background*/,
@@ -210,8 +213,6 @@ body {
 {
   .btn-primary
   {
-    width: 100%;
-    outline: 0;
     padding: 13px 0;
     @include button-variant(
       $white /*background*/,
@@ -225,5 +226,16 @@ body {
   img
   {
     margin-right: 10px;
+  }
+  .btn-blue
+  {
+    @include button-variant(
+      $blue /*background*/,
+      #DEDEDE /*border*/,
+      $black /*text color*/,
+      lighten($success, 5%) /*hover background*/,
+      $success /*hover border*/,
+      $white /*hover text color*/
+    );
   }
 }
