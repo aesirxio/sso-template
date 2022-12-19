@@ -17,8 +17,8 @@ const ConnectMetamask = () => {
               onClick={() => connect({ connector })}
               className="btn btn-primary"
             >
-               <img src={Logometamask} alt="logo-metamask"/>
-              Login via {connector.name}
+              <img src={Logometamask} alt="logo-metamask" />
+              Connect to {connector.name}
               {isLoading &&
                 connector.id === pendingConnector?.id &&
                 " (connecting)"}
