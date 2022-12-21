@@ -2,19 +2,29 @@ import React, { useRef } from "react";
 import { useSignMessage } from "wagmi";
 import { verifyMessage } from "ethers/lib/utils";
 
-const SignMessage = () => {
-  const recoveredAddress = useRef();
+import Logometamask from "./../../images/Icon.png";
+import useWallet from "../../hook/useWallet";
+import { useAccount } from "wagmi";
 
-  const { data, error, isLoading, signMessage } = useSignMessage({
-    onSuccess(data, variables) {
-      // Verify signature when sign message succeeds
+const SignMessage = () => {
+  const wallet = "metamask";
+  const { address } = useAccount();
+  const { getWalletNonce, verifySignature } = useWallet(wallet, address);
+
+  const { isLoading, signMessage } = useSignMessage({
+    async onSuccess(data, variables) {
       const address = verifyMessage(variables.message, data);
-      recoveredAddress.current = address;
+
+      await verifySignature(wallet, address, data);
     },
   });
 
-  const handleSignMessage = () => {
-    signMessage({ message: "Sign" });
+  const handleSignMessage = async () => {
+    const nonce = await getWalletNonce();
+
+    if (nonce) {
+      signMessage({ message: `${nonce} ` });
+    }
   };
 
   return (
@@ -24,17 +34,9 @@ const SignMessage = () => {
         className="btn btn-primary"
         onClick={handleSignMessage}
       >
-        {isLoading ? "Check Wallet" : "Sign Message"}
+        <img src={Logometamask} alt="logo-metamask" />
+        Sign in via MetaMask
       </button>
-
-      {data && (
-        <div>
-          <div>Recovered Address: {recoveredAddress.current}</div>
-          <div>Signature: {data}</div>
-        </div>
-      )}
-
-      {error && <div>{error.message}</div>}
     </>
   );
 };
