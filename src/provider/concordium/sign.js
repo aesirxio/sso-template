@@ -24,7 +24,7 @@ const SignMessageConcordium = ({ accountAddress }) => {
   return (
     <button className="btn btn-blue" onClick={handleConnect}>
       <img width={20} height={21} src={logo} alt="logo-concordium" />
-      Login via Concordium
+      Sign in via Concordium
     </button>
   );
 };
