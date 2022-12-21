@@ -1,5 +1,5 @@
 import BaseRoute from "aesirx-dma-lib/src/Abstract/BaseRoute";
-
+import { toast } from "react-toastify";
 import axios from "axios";
 
 const useNonce = (wallet, publicAddress) => {
@@ -35,6 +35,7 @@ const useNonce = (wallet, publicAddress) => {
 
       return data.result;
     } catch (error) {
+      toast("Your wallet is not registered");
       return false;
     }
   };
