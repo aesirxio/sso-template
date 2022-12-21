@@ -45,8 +45,8 @@ const useWallet = (wallet, publicAddress) => {
     try {
       const urlPOST = window.location.origin;
       const reqAuthFormData = {
-        publicAddress: publicAddress,
         wallet: wallet,
+        publicAddress: publicAddress,
         signature: signature,
       };
 
@@ -70,11 +70,12 @@ const useWallet = (wallet, publicAddress) => {
         },
         data: reqAuthFormData,
       };
+
       const { data } = await axios(config);
 
-      window.location.replace(
-        `${urlPOST}?state=sso&${queryString.stringify(data.result)}`
-      );
+      window.location.href = `${urlPOST}?state=sso&${queryString.stringify(
+        data.result
+      )}`;
     } catch (error) {
       toast("Your wallet is not registered");
       return false;
