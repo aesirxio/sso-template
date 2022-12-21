@@ -39,7 +39,7 @@ const useWallet = (wallet, publicAddress) => {
       }
       throw false;
     } catch (error) {
-      toast("Your wallet is not registered");
+      toast("Your wallet is not connected.");
       return false;
     }
   };
