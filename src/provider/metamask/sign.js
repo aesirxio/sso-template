@@ -53,7 +53,7 @@ const SignMessage = () => {
         className="btn btn-primary"
         onClick={handleSignMessage}
       >
-        {isLoading ? "Check Wallet" : "Sign Message"}
+        {isLoading ? "Check Wallet" : "Sign in via MetaMask"}
       </button>
 
       {data && (
