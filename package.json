@@ -15,12 +15,13 @@
   "author": "AesirX",
   "license": "ISC",
   "dependencies": {
-    "aesirx-dma-lib": "aesirxio/dma-lib",
     "@concordium/browser-wallet-api-helpers": "^2.0.0",
+    "aesirx-dma-lib": "aesirxio/dma-lib",
     "bootstrap": "^5.2.3",
     "ethers": "^5.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-toastify": "^9.1.1",
     "wagmi": "^0.8.10",
     "web3": "^1.8.1"
   },
@@ -30,6 +31,7 @@
     "@babel/preset-react": "^7.18.6",
     "@popperjs/core": "^2.11.6",
     "autoprefixer": "^10.4.13",
+    "axios": "^1.2.1",
     "babel-loader": "^9.1.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-env": "^1.7.0",
@@ -49,6 +51,7 @@
     "mini-css-extract-plugin": "^2.7.2",
     "postcss": "^8.4.19",
     "postcss-loader": "^7.0.2",
+    "query-string": "^7.1.3",
     "redweb-template-library": "git+ssh://git@gitlab.redweb.dk:templates/joomla/redweb-template-library.git#master",
     "sass": "^1.56.1",
     "sass-loader": "^13.2.0",
@@ -60,9 +63,7 @@
     "webpack-dev-server": "^4.11.1",
     "webpack-font-preload-plugin": "^1.5.0",
     "webpack-remove-empty-scripts": "^1.0.1",
-    "yarn-upgrade-all": "^0.7.1",
-    "axios": "^1.2.1",
-    "query-string": "^7.1.3"
+    "yarn-upgrade-all": "^0.7.1"
   },
   "browserslist": [
     "> 1%",

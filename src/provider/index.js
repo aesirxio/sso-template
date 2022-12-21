@@ -3,6 +3,7 @@ import Metamask from "./metamask";
 import { WagmiConfig, createClient } from "wagmi";
 import { getDefaultProvider } from "ethers";
 import Concordium from "./concordium";
+import ToastComponent from "../components/Toast";
 
 const client = createClient({
   autoConnect: true,
@@ -20,6 +21,7 @@ const ProviverLogin = () => {
       <div className="control-group">
         <Concordium />
       </div>
+      <ToastComponent />
     </>
   );
 };

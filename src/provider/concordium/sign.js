@@ -1,19 +1,26 @@
 import React, { useState } from "react";
 import { detectConcordiumProvider } from "@concordium/browser-wallet-api-helpers";
 import logo from "./../../images/concordium.png";
+import useNonce from "../../hook/useNonce";
+import { toast } from "react-toastify";
 
 const SignMessageConcordium = ({ accountAddress }) => {
-  const [data, setData] = useState();
+  const { getWalletNonce, verifySignature } = useNonce(
+    "concordium",
+    accountAddress
+  );
 
   const handleConnect = async () => {
-    const provider = await detectConcordiumProvider();
-    const signature = await provider.signMessage(
-      accountAddress,
-      "This is a message to be signed"
-    );
+    const nonce = await getWalletNonce();
+    if (nonce) {
+      const provider = await detectConcordiumProvider();
+      const signature = await provider.signMessage(accountAddress, nonce);
 
-    if (signature[0]) {
-      setData(signature[0][0]);
+      if (signature[0]) {
+        await verifySignature(address, signature[0][0]);
+      }
+    } else {
+      toast("Your wallet is not registered");
     }
   };
 
@@ -23,13 +30,6 @@ const SignMessageConcordium = ({ accountAddress }) => {
         <img width={40} src={logo} alt="logo-concordium" />
         Login via Concordium
       </button>
-
-      {data && (
-        <div>
-          <div>Recovered Address: {accountAddress}</div>
-          <div>Signature: {data}</div>
-        </div>
-      )}
     </>
   );
 };
