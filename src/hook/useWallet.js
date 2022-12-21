@@ -34,7 +34,10 @@ const useWallet = (wallet, publicAddress) => {
       };
       const { data } = await axios(config);
 
-      return data.result;
+      if (data.result) {
+        return data.result;
+      }
+      throw false;
     } catch (error) {
       toast("Your wallet is not registered");
       return false;
