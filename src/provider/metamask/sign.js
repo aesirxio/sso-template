@@ -3,18 +3,19 @@ import { useSignMessage } from "wagmi";
 import { verifyMessage } from "ethers/lib/utils";
 
 import Logometamask from "./../../images/Icon.png";
-import useNonce from "../../hook/useNonce";
+import useWallet from "../../hook/useWallet";
 import { useAccount } from "wagmi";
 
 const SignMessage = () => {
+  const wallet = "metamask";
   const { address } = useAccount();
-  const { getWalletNonce, verifySignature } = useNonce("metamask", address);
+  const { getWalletNonce, verifySignature } = useWallet(wallet, address);
 
   const { isLoading, signMessage } = useSignMessage({
     async onSuccess(data, variables) {
       const address = verifyMessage(variables.message, data);
 
-      await verifySignature(address, data);
+      await verifySignature(wallet, address, data);
     },
   });
 
