@@ -131,7 +131,7 @@ const useWallet = (wallet, publicAddress) => {
 
           window.location.href = `http://${
             sso.data.domain
-          }?state=sso&${queryString.stringify(data.result)}`;
+          }?state=sso&${queryString.stringify(data.result)}&lastVisitDate=0`;
         }
       }
     } catch (error) {
