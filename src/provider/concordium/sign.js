@@ -13,7 +13,7 @@ const SignMessageConcordium = ({ accountAddress }) => {
     const nonce = await getWalletNonce();
     if (nonce) {
       const provider = await detectConcordiumProvider();
-      const signature = await provider.signMessage(accountAddress, nonce);
+      const signature = await provider.signMessage(accountAddress, `${nonce}`);
 
       if (signature[0]) {
         await verifySignature(address, signature[0][0]);
