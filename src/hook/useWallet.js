@@ -76,9 +76,64 @@ const useWallet = (wallet, publicAddress) => {
 
       const { data } = await axios(config);
 
-      window.location.href = `${urlPOST}?state=sso&${queryString.stringify(
-        data.result
-      )}`;
+      // Get member
+      const getUser = BaseRoute.__createRequestURL(
+        {
+          webserviceClient: "site",
+          webserviceVersion: "1.0.0",
+          option: "persona",
+          task: "getTokenByUser",
+          api: "hal",
+          access_token: data?.result?.access_token,
+        },
+        false,
+        urlPOST
+      );
+
+      const response = await axios({
+        method: "get",
+        url: getUser,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      console.log("122", response?.data?.result?.member_id);
+
+      if (response?.data?.result?.member_id) {
+        // Get profile
+        const getProfile = BaseRoute.__createRequestURL(
+          {
+            webserviceClient: "site",
+            webserviceVersion: "1.0.0",
+            option: "member",
+            api: "hal",
+            id: response?.data?.result?.member_id,
+            access_token: data?.result?.access_token,
+          },
+          false,
+          urlPOST
+        );
+
+        const responseProfile = await axios({
+          method: "get",
+          url: getProfile,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (responseProfile?.data?.licenses) {
+          const sso = responseProfile?.data?.licenses.find(
+            (e) => e.subscription[0]?.product === "product-aesirx-sso"
+          );
+          console.log("sso", sso.data.domain);
+
+          window.location.href = `http://${
+            sso.data.domain
+          }?state=sso&${queryString.stringify(data.result)}`;
+        }
+      }
     } catch (error) {
       toast("Your wallet is not registered");
       return false;
