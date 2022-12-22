@@ -16,7 +16,7 @@ const SignMessageConcordium = ({ accountAddress }) => {
       const signature = await provider.signMessage(accountAddress, `${nonce}`);
 
       if (signature[0]) {
-        await verifySignature(address, signature[0][0]);
+        await verifySignature(accountAddress, signature[0][0]);
       }
     }
   };
