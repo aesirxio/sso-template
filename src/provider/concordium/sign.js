@@ -4,10 +4,9 @@ import logo from "./../../images/concordium.png";
 import useWallet from "../../hook/useWallet";
 
 const SignMessageConcordium = ({ accountAddress }) => {
-  const { getWalletNonce, verifySignature } = useWallet(
-    "concordium",
-    accountAddress
-  );
+  const wallet = "concordium";
+
+  const { getWalletNonce, verifySignature } = useWallet(wallet, accountAddress);
 
   const handleConnect = async () => {
     const nonce = await getWalletNonce();
@@ -16,7 +15,7 @@ const SignMessageConcordium = ({ accountAddress }) => {
       const signature = await provider.signMessage(accountAddress, `${nonce}`);
 
       if (signature[0]) {
-        await verifySignature(accountAddress, signature[0][0]);
+        await verifySignature(wallet, accountAddress, signature[0][0]);
       }
     }
   };
