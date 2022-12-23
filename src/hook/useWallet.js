@@ -77,7 +77,7 @@ const useWallet = (wallet, publicAddress) => {
       const { data } = await axios(config);
 
       if (data?.result?.recirect_uri) {
-        window.location.href = `http://${
+        window.location.href = `${
           data?.result?.recirect_uri
         }?state=sso&${queryString.stringify(data.result)}&lastVisitDate=0`;
       } else {
