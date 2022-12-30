@@ -1,9 +1,9 @@
 <?php
 /**
- * @package     Joomla.Site
- * @subpackage  com_users
+ * @package     AesirX
+ * @subpackage  SSO
  *
- * @copyright   Copyright (C) 2005 - 2020 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2022 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -36,7 +36,7 @@ $logo           = $params->get('logo');
 		</div>
 	<?php endif; ?>
 	<h1>
-		Welcome to<div class="logo-login"><div class="custom"><img src="<?php echo $this->baseurl; ?>/<?php echo htmlspecialchars($logo, ENT_QUOTES); ?>"  alt="<?php echo htmlspecialchars($this->params->get('sitetitle')); ?>" /></div></div>SSO 
+		Welcome to<div class="logo-login"><div class="custom"><img src="<?php echo $this->baseurl; ?>/<?php echo htmlspecialchars($logo, ENT_QUOTES); ?>"  alt="<?php echo htmlspecialchars($this->params->get('sitetitle')); ?>" /></div></div>SSO
 		<br/>Sign In to getting started.
 	</h1>
 	<div class="login">
