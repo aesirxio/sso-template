@@ -1,6 +1,6 @@
 /**
- * @package     Joomla.Site
- * @subpackage  Templates.AesirX
+ * @package     AesirX
+ * @subpackage  SSO
  *
  * @copyright   Copyright (C) 2022 AesirX. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -57,19 +57,17 @@
   -moz-osx-font-smoothing: grayscale;
 }
 body {
-  background-color :$white;
+  background-color: $white;
   .body-wrap {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     main {
-      .body-login
-      {
-        h1
-        {
+      .body-login {
+        h1 {
           text-align: center;
-        } 
+        }
         .txt_or {
           position: relative;
           font-size: 14px;
@@ -82,7 +80,7 @@ body {
             height: 1px;
             top: 49%;
             left: 0;
-            background-color: #D4DCE8;
+            background-color: #d4dce8;
           }
           span {
             position: relative;
@@ -90,15 +88,13 @@ body {
             text-transform: uppercase;
             z-index: 2;
             padding: 0 10px;
-            color:#D4DCE8;
+            color: #d4dce8;
           }
         }
-        .logo-login
-        {
+        .logo-login {
           display: inline-block;
           margin: 5px 10px;
-          .custom
-          {
+          .custom {
             display: flex;
           }
         }
@@ -209,29 +205,25 @@ body {
     $white /*hover text color*/
   );
 }
-.masklogin
-{
-  .btn-primary
-  {
+.masklogin {
+  .btn-primary {
     padding: 13px 0;
     @include button-variant(
       $white /*background*/,
-      #DEDEDE /*border*/,
+      #dedede /*border*/,
       $black /*text color*/,
       lighten($success, 5%) /*hover background*/,
       $success /*hover border*/,
       $white /*hover text color*/
     );
   }
-  img
-  {
+  img {
     margin-right: 10px;
   }
-  .btn-blue
-  {
+  .btn-blue {
     @include button-variant(
       $blue /*background*/,
-      #DEDEDE /*border*/,
+      #dedede /*border*/,
       $white /*text color*/,
       lighten($success, 5%) /*hover background*/,
       $success /*hover border*/,
