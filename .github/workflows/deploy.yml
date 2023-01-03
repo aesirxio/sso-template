@@ -1,0 +1,35 @@
+name: deploy
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: '0 0 * * *' # Everyday at 12am
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment: deploy
+    env:
+      CI: false
+    steps:
+      - uses: actions/checkout@v3
+      - uses: php-actions/composer@v6
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - run: composer install
+      - run: yarn install
+      - run: yarn run release
+
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: unnecessary
+
+      - name: Adding Known Hosts
+        run: ssh-keyscan -p ${{ secrets.SSH_PORT}} -H ${{ secrets.SSH_HOST }}  >> ~/.ssh/known_hosts
+
+      - name: Deploy with rsync
+        run: rsync -avz -e "ssh -p ${{ secrets.SSH_PORT }}" ./dist/templates/sso/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_PATH }}
