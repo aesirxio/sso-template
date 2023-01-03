@@ -1,16 +1,15 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
-const MediaQueryPlugin = require("redweb-template-library/media-query-plugin");
+const MediaQueryPlugin = require("r-digital-template-library/media-query-plugin");
 const WebpackAssetsManifest = require("webpack-assets-manifest");
 const FileManagerPlugin = require("filemanager-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const RealFaviconPlugin = require("redweb-template-library/real-favicon-webpack-plugin");
+const RealFaviconPlugin = require("r-digital-template-library/real-favicon-webpack-plugin");
 const HtmlWebpackSkipAssetsPlugin =
   require("html-webpack-skip-assets-plugin").HtmlWebpackSkipAssetsPlugin;
 const TerserPlugin = require("terser-webpack-plugin");
 const RemoveEmptyScriptsPlugin = require("webpack-remove-empty-scripts");
-const CriticalCssPlugin = require("critical-css-webpack-plugin");
 const FontPreloadPlugin = require("webpack-font-preload-plugin");
 const { DefinePlugin } = require("webpack");
 
@@ -20,7 +19,6 @@ const {
   wwwDir,
   projectname,
   sassLoader,
-  sassCriticalLoader,
   imageLoader,
   fontLoader,
   jsLoader,
@@ -55,6 +53,7 @@ module.exports = (env, argv) => {
         template: "./template/index.php",
         excludeAssets: [/.*./],
         realfavicons: true,
+        minify: false,
       }),
       new HtmlWebpackPlugin({
         inject: false,
@@ -66,6 +65,7 @@ module.exports = (env, argv) => {
         template: "./template/component.php",
         chunks: ["views.component"],
         excludeAssets: [/.*./],
+        minify: false,
       }),
       new HtmlWebpackPlugin({
         inject: false,
@@ -76,6 +76,7 @@ module.exports = (env, argv) => {
           "/templateDetails.xml",
         template: "./template/templateDetails.xml",
         templateParameters: process.env,
+        minify: false,
       }),
       new HtmlWebpackSkipAssetsPlugin(),
       new FileManagerPlugin({
@@ -133,8 +134,6 @@ module.exports = (env, argv) => {
                   "/template_thumbnail.png",
               },
             ],
-
-            delete: [path.resolve(__dirname, "./jce")],
           },
           onStart: {
             delete: [
@@ -255,16 +254,11 @@ module.exports = (env, argv) => {
         filename: "css/" + name + ".css",
       }),
       new RealFaviconPlugin({
-        favicon: path.resolve(__dirname, "./src/favicon/favicon.jpg"),
+        favicon: path.resolve(__dirname, "./src/favicon/favicon.png"),
         faviconJson: path.resolve(__dirname, "./src/favicon/favicon.json"),
         publicPath: "/templates/" + process.env.projectname + "/favicon",
         outputPath:
           templatePath + "/templates/" + process.env.projectname + "/favicon",
-      }),
-      new CriticalCssPlugin({
-        base: templatePath + "/templates/" + process.env.projectname + "/",
-        src: "./template/index.php",
-        target: "css/critical.css",
       })
     );
   }

@@ -23,7 +23,7 @@ const SignMessage = () => {
     const nonce = await getWalletNonce();
 
     if (nonce) {
-      signMessage({ message: `${nonce} ` });
+      signMessage({ message: `${nonce}` });
     }
   };
 

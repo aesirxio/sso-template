@@ -12,13 +12,13 @@
 	<description>SSO AesirX Template</description>
 
 	<files>
-		<folder>favicons</folder>
-		<folder>fonts</folder>
+		<folder>css</folder>
+		<folder>favicon</folder>
 		<folder>html</folder>
 		<folder>images</folder>
 		<folder>js</folder>
 		<folder>vendor</folder>
-		<filename>manifest.json</filename>
+		<filename>assets-manifest.json</filename>
 		<filename>component.php</filename>
 		<filename>helper.php</filename>
 		<filename>index.php</filename>
@@ -45,11 +45,11 @@
 	<config>
 		<fields name="params">
 			<fieldset name="advanced">
-				<field 
+				<field
 					name="logo"
 					type="media"
-					label="TPL_SSO_FIELD_LOGO_LABEL" 
-					description="TPL_SSO_FIELD_LOGO_DESC" 
+					label="TPL_SSO_FIELD_LOGO_LABEL"
+					description="TPL_SSO_FIELD_LOGO_DESC"
 				/>
 			</fieldset>
 		</fields>

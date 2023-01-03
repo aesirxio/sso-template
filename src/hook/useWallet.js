@@ -34,9 +34,12 @@ const useWallet = (wallet, publicAddress) => {
       };
       const { data } = await axios(config);
 
-      return data.result;
+      if (data.result) {
+        return data.result;
+      }
+      throw false;
     } catch (error) {
-      toast("Your wallet is not registered");
+      toast("Your wallet is not connected any AesirX account.");
       return false;
     }
   };
@@ -45,8 +48,8 @@ const useWallet = (wallet, publicAddress) => {
     try {
       const urlPOST = window.location.origin;
       const reqAuthFormData = {
-        publicAddress: publicAddress,
         wallet: wallet,
+        publicAddress: publicAddress,
         signature: signature,
       };
 
@@ -70,11 +73,16 @@ const useWallet = (wallet, publicAddress) => {
         },
         data: reqAuthFormData,
       };
+
       const { data } = await axios(config);
 
-      window.location.replace(
-        `${urlPOST}?state=sso&${queryString.stringify(data.result)}`
-      );
+      if (data?.result?.recirect_uri) {
+        window.location.href = `${
+          data?.result?.recirect_uri
+        }?state=sso&${queryString.stringify(data.result)}&lastVisitDate=0`;
+      } else {
+        throw false;
+      }
     } catch (error) {
       toast("Your wallet is not registered");
       return false;

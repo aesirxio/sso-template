@@ -8930,6 +8930,18 @@ quick-lru@^5.1.1:
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-5.1.1.tgz#366493e6b3e42a3a6885e2e99d18f80fb7a8c932"
   integrity sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==
 
+"r-digital-template-library@git+https://github.com/aesirxio/r-digital-template-library.git#master":
+  version "1.0.0"
+  resolved "git+https://github.com/aesirxio/r-digital-template-library.git#49ab15648afc85874b963c5b06b9d3a53ff3d492"
+  dependencies:
+    critical "^4.0.1"
+    html-webpack-plugin "^5.2.0"
+    loader-utils "^2.0.0"
+    postcss "^7.0.39"
+    rfg-api "^0.5.2"
+    webpack "^5.57.1"
+    webpack-sources "^2.2.0"
+
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5, randombytes@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/randombytes/-/randombytes-2.1.0.tgz#df6f84372f0270dc65cdf6291349ab7a473d4f2a"
@@ -9075,18 +9087,6 @@ redent@^3.0.0:
   dependencies:
     indent-string "^4.0.0"
     strip-indent "^3.0.0"
-
-"redweb-template-library@git+ssh://git@gitlab.redweb.dk:templates/joomla/redweb-template-library.git#master":
-  version "1.0.0"
-  resolved "git+ssh://git@gitlab.redweb.dk:templates/joomla/redweb-template-library.git#8349d20082afb773ca6d30acdd460d0abd21a868"
-  dependencies:
-    critical "^4.0.1"
-    html-webpack-plugin "^5.2.0"
-    loader-utils "^2.0.0"
-    postcss "^7.0.39"
-    rfg-api "^0.5.2"
-    webpack "^5.57.1"
-    webpack-sources "^2.2.0"
 
 regenerate-unicode-properties@^10.1.0:
   version "10.1.0"
