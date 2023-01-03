@@ -8930,9 +8930,9 @@ quick-lru@^5.1.1:
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-5.1.1.tgz#366493e6b3e42a3a6885e2e99d18f80fb7a8c932"
   integrity sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==
 
-"r-digital-template-library@git+https://github.com/aesirxio/r-digital-template-library.git#master":
+"aesirxio-template-library@git+https://github.com/aesirxio/aesirxio-template-library.git#master":
   version "1.0.0"
-  resolved "git+https://github.com/aesirxio/r-digital-template-library.git#49ab15648afc85874b963c5b06b9d3a53ff3d492"
+  resolved "git+https://github.com/aesirxio/aesirxio-template-library.git#f8b7872bf166c28a9a5330d800db34aea267897e"
   dependencies:
     critical "^4.0.1"
     html-webpack-plugin "^5.2.0"

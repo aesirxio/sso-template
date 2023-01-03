@@ -1,11 +1,11 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
-const MediaQueryPlugin = require("r-digital-template-library/media-query-plugin");
+const MediaQueryPlugin = require("aesirxio-template-library/media-query-plugin");
 const WebpackAssetsManifest = require("webpack-assets-manifest");
 const FileManagerPlugin = require("filemanager-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const RealFaviconPlugin = require("r-digital-template-library/real-favicon-webpack-plugin");
+const RealFaviconPlugin = require("aesirxio-template-library/real-favicon-webpack-plugin");
 const HtmlWebpackSkipAssetsPlugin =
   require("html-webpack-skip-assets-plugin").HtmlWebpackSkipAssetsPlugin;
 const TerserPlugin = require("terser-webpack-plugin");
