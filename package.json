@@ -52,7 +52,7 @@
     "postcss": "^8.4.19",
     "postcss-loader": "^7.0.2",
     "query-string": "^7.1.3",
-    "redweb-template-library": "git+ssh://git@gitlab.redweb.dk:templates/joomla/redweb-template-library.git#master",
+    "r-digital-template-library": "git+https://github.com/aesirxio/r-digital-template-library.git#master",
     "sass": "^1.56.1",
     "sass-loader": "^13.2.0",
     "style-loader": "^3.3.1",

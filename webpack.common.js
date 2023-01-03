@@ -1,4 +1,4 @@
-const MediaQueryPlugin = require("redweb-template-library/media-query-plugin");
+const MediaQueryPlugin = require("r-digital-template-library/media-query-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const path = require("path");
