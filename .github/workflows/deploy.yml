@@ -13,13 +13,6 @@ jobs:
       CI: false
     steps:
       - uses: actions/checkout@v3
-      - uses: php-actions/composer@v6
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 14
-
-      - run: yarn install
-      - run: yarn run release
 
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
@@ -29,6 +22,14 @@ jobs:
 
       - name: Adding Known Hosts
         run: ssh-keyscan -p ${{ secrets.SSH_PORT}} -H ${{ secrets.SSH_HOST }}  >> ~/.ssh/known_hosts
+
+      - uses: php-actions/composer@v6
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - run: yarn install
+      - run: yarn run release
 
       - name: Deploy with rsync
         run: rsync -avz -e "ssh -p ${{ secrets.SSH_PORT }}" ./dist/templates/sso/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_PATH }}
