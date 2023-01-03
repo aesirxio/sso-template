@@ -1,9 +1,9 @@
 <?php
 /**
- * @package     Joomla.Site
- * @subpackage  Templates.AesirX
+ * @package     AesirX
+ * @subpackage  SSO
  *
- * @copyright   Copyright (C) 2022 AesirX. All rights reserved.
+ * @copyright   Copyright (C) 2022 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
