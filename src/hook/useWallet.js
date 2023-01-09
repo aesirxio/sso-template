@@ -3,6 +3,8 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import queryString from "query-string";
 
+const withHttp = (url) => (!/^https?:\/\//i.test(url) ? `https://${url}` : url);
+
 const useWallet = (wallet, publicAddress) => {
   const getWalletNonce = async () => {
     try {
@@ -77,9 +79,9 @@ const useWallet = (wallet, publicAddress) => {
       const { data } = await axios(config);
 
       if (data?.result?.recirect_uri) {
-        window.location.href = `${
+        window.location.href = `${withHttp(
           data?.result?.recirect_uri
-        }?state=sso&${queryString.stringify(data.result)}&lastVisitDate=0`;
+        )}?state=sso&${queryString.stringify(data.result)}&lastVisitDate=0`;
       } else {
         throw false;
       }
