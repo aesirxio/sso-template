@@ -79,9 +79,16 @@ const useWallet = (wallet, publicAddress) => {
       const { data } = await axios(config);
 
       if (data?.result?.recirect_uri) {
-        window.location.href = `${withHttp(
-          data?.result?.recirect_uri
-        )}?state=sso&${queryString.stringify(data.result)}&lastVisitDate=0`;
+        if (window.opener != null && !window.opener.closed) {
+          var walletResponse =
+            window.opener.document.getElementById("walletResponse");
+          if (walletResponse) {
+            walletResponse.value = queryString.stringify(data.result);
+            walletResponse.dispatchEvent(
+              new Event("change", { bubbles: true })
+            );
+          }
+        }
       } else {
         throw false;
       }
