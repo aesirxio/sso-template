@@ -3,6 +3,8 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import queryString from "query-string";
 
+const withHttp = (url) => (!/^https?:\/\//i.test(url) ? `https://${url}` : url);
+
 const useWallet = (wallet, publicAddress) => {
   const getWalletNonce = async () => {
     try {
