@@ -78,13 +78,13 @@ const useWallet = (wallet, publicAddress) => {
 
       if (data?.result?.recirect_uri) {
         if (window.opener != null && !window.opener.closed) {
-          var ssoRedirect =
-            window.opener.document.getElementById("ssoRedirect");
-          ssoRedirect.value = `${
-            data?.result?.recirect_uri
-          }?state=sso&${queryString.stringify(data.result)}&lastVisitDate=0`;
+          var walletResponse =
+            window.opener.document.getElementById("walletResponse");
+          if (walletResponse) {
+            walletResponse.value = queryString.stringify(data.result);
+          }
         }
-        window.location.href = `${data?.result?.recirect_uri}?state=sso`;
+        window.close();
       } else {
         throw false;
       }
