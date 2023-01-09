@@ -84,7 +84,6 @@ const useWallet = (wallet, publicAddress) => {
             walletResponse.value = queryString.stringify(data.result);
           }
         }
-        window.close();
       } else {
         throw false;
       }
