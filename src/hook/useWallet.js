@@ -77,9 +77,14 @@ const useWallet = (wallet, publicAddress) => {
       const { data } = await axios(config);
 
       if (data?.result?.recirect_uri) {
-        window.location.href = `${
-          data?.result?.recirect_uri
-        }?state=sso&${queryString.stringify(data.result)}&lastVisitDate=0`;
+        if (window.opener != null && !window.opener.closed) {
+          var ssoRedirect =
+            window.opener.document.getElementById("ssoRedirect");
+          ssoRedirect.value = `${
+            data?.result?.recirect_uri
+          }?state=sso&${queryString.stringify(data.result)}&lastVisitDate=0`;
+        }
+        window.location.href = `${data?.result?.recirect_uri}?state=sso`;
       } else {
         throw false;
       }
