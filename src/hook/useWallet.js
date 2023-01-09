@@ -82,7 +82,9 @@ const useWallet = (wallet, publicAddress) => {
             window.opener.document.getElementById("walletResponse");
           if (walletResponse) {
             walletResponse.value = queryString.stringify(data.result);
-            walletResponse.dispatchEvent(new Event("change"));
+            walletResponse.dispatchEvent(
+              new Event("change", { bubbles: true })
+            );
           }
         }
       } else {
