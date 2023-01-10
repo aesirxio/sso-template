@@ -75,18 +75,14 @@ const useWallet = (wallet, publicAddress) => {
         },
         data: reqAuthFormData,
       };
-
       const { data } = await axios(config);
 
       if (data?.result) {
         if (window.opener != null) {
-          window.addEventListener("message", (event) => {
-            if (event.origin !== "https://api.aesirx.io") return;
-            window.opener.postMessage(
-              { walletResponse: queryString.stringify(data.result) },
-              event.origin
-            );
-          });
+          window.opener.postMessage(
+            { walletResponse: queryString.stringify(data.result) },
+            "*"
+          );
         }
       } else {
         throw false;
