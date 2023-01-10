@@ -2428,9 +2428,10 @@ aes-js@^3.1.2:
   resolved "https://registry.yarnpkg.com/aes-js/-/aes-js-3.1.2.tgz#db9aabde85d5caabbfc0d4f2a4446960f627146a"
   integrity sha512-e5pEa2kBnBOgR4Y/p20pskXI74UEz7de8ZGVo58asOtvSVG5YAbJeELPZxOmt+Bnz3rX753YKhfIn4X4l1PPRQ==
 
-aesirx-dma-lib@aesirxio/dma-lib:
-  version "1.6.1-alpha.1"
-  resolved "https://codeload.github.com/aesirxio/dma-lib/tar.gz/b6105d468e3853e4cdc171d0c4eb24cb1ee81891"
+aesirx-dma-lib@^1.7.4:
+  version "1.7.4"
+  resolved "https://registry.yarnpkg.com/aesirx-dma-lib/-/aesirx-dma-lib-1.7.4.tgz#d0787a6f2fa09890b2042c8be04b3eb47a9d3d9f"
+  integrity sha512-GWS/7rkyYBCPCZo7+M8Ov6m0zmleHV3AIDzxkoDihja9sz33wPKcFLbeGyXGoTYSmRJIqk0GJQklz5fD9U3w8Q==
   dependencies:
     axios "^0.21.0"
     axios-auth-refresh "^3.0.0"
@@ -2438,6 +2439,18 @@ aesirx-dma-lib@aesirxio/dma-lib:
     css-minimizer-webpack-plugin "^4.0.0"
     qs "^6.10.1"
     query-string "^7.1.1"
+
+"aesirxio-template-library@git+https://github.com/aesirxio/aesirxio-template-library.git#master":
+  version "1.0.0"
+  resolved "git+https://github.com/aesirxio/aesirxio-template-library.git#f8b7872bf166c28a9a5330d800db34aea267897e"
+  dependencies:
+    critical "^4.0.1"
+    html-webpack-plugin "^5.2.0"
+    loader-utils "^2.0.0"
+    postcss "^7.0.39"
+    rfg-api "^0.5.2"
+    webpack "^5.57.1"
+    webpack-sources "^2.2.0"
 
 agent-base@5:
   version "5.1.1"
@@ -8929,18 +8942,6 @@ quick-lru@^5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-5.1.1.tgz#366493e6b3e42a3a6885e2e99d18f80fb7a8c932"
   integrity sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==
-
-"aesirxio-template-library@git+https://github.com/aesirxio/aesirxio-template-library.git#master":
-  version "1.0.0"
-  resolved "git+https://github.com/aesirxio/aesirxio-template-library.git#f8b7872bf166c28a9a5330d800db34aea267897e"
-  dependencies:
-    critical "^4.0.1"
-    html-webpack-plugin "^5.2.0"
-    loader-utils "^2.0.0"
-    postcss "^7.0.39"
-    rfg-api "^0.5.2"
-    webpack "^5.57.1"
-    webpack-sources "^2.2.0"
 
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5, randombytes@^2.1.0:
   version "2.1.0"

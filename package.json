@@ -4,8 +4,7 @@
   "description": "Webpack config for Joomla template",
   "private": true,
   "scripts": {
-    "build": "yarn run build:lib && webpack --mode=development",
-    "build:lib": "cd node_modules/aesirx-dma-lib && yarn install && yarn run build && cd ../../",
+    "build": "webpack --mode=development",
     "release": "webpack --mode=production  --env deploy=true",
     "watch": "webpack --watch --mode=development",
     "deploy": "webpack --mode=development --env deploy=true",
@@ -16,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "@concordium/browser-wallet-api-helpers": "^2.0.0",
-    "aesirx-dma-lib": "aesirxio/dma-lib",
+    "aesirx-dma-lib": "^1.7.4",
     "bootstrap": "^5.2.3",
     "ethers": "^5.7.2",
     "react": "^18.2.0",

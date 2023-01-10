@@ -78,18 +78,28 @@ module.exports = (env, argv) => {
         templateParameters: process.env,
         minify: false,
       }),
+      new HtmlWebpackPlugin({
+        filename:
+          templatePath +
+          "/templates/" +
+          process.env.projectname +
+          "/html/layouts/oauth2/authorize.php",
+        template: "./template/html/layouts/oauth2/authorize.php",
+        templateParameters: process.env,
+        minify: false,
+      }),
       new HtmlWebpackSkipAssetsPlugin(),
       new FileManagerPlugin({
         events: {
           onEnd: {
             copy: [
               {
-                source: path.resolve(__dirname, "./template/html"),
+                source: path.resolve(__dirname, "./template/html/com_users"),
                 destination:
                   templatePath +
                   "/templates/" +
                   process.env.projectname +
-                  "/html",
+                  "/html/com_users",
                 options: {
                   force: true,
                 },
