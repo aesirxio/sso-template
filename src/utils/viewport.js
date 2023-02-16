@@ -6,9 +6,9 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-const breakpoints = require("./breakpoints.js");
+const breakpoints = require('./breakpoints.js');
 
-export var viewport = "mobile";
+export var viewport = 'mobile';
 
 Object.keys(breakpoints).map(function (screen) {
   Object.keys(breakpoints[screen]).map(function (breakpoint) {
@@ -19,13 +19,13 @@ Object.keys(breakpoints).map(function (screen) {
 });
 
 export function loadStyle(name) {
-  if (joomlaOptions[name + "-" + viewport + ".css"]) {
-    var body = document.querySelector("body");
+  if (joomlaOptions[name + '-' + viewport + '.css']) {
+    var body = document.querySelector('body');
 
-    var style = document.createElement("link");
-    style.href = joomlaOptions[name + "-" + viewport + ".css"];
-    style.type = "text/css";
-    style.rel = "stylesheet";
+    var style = document.createElement('link');
+    style.href = joomlaOptions[name + '-' + viewport + '.css'];
+    style.type = 'text/css';
+    style.rel = 'stylesheet';
     body.append(style);
   }
 }

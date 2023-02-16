@@ -1,7 +1,7 @@
-import BaseRoute from "aesirx-dma-lib/src/Abstract/BaseRoute";
-import { toast } from "react-toastify";
-import axios from "axios";
-import queryString from "query-string";
+import BaseRoute from 'aesirx-dma-lib/src/Abstract/BaseRoute';
+import { toast } from 'react-toastify';
+import axios from 'axios';
+import queryString from 'query-string';
 
 const withHttp = (url) => (!/^https?:\/\//i.test(url) ? `https://${url}` : url);
 
@@ -16,21 +16,21 @@ const useWallet = (wallet, publicAddress) => {
 
       const POST_URL = BaseRoute.__createRequestURL(
         {
-          webserviceClient: "site",
-          webserviceVersion: "1.0.0",
-          option: "member",
-          task: "getWalletNonce",
-          api: "hal",
+          webserviceClient: 'site',
+          webserviceVersion: '1.0.0',
+          option: 'member',
+          task: 'getWalletNonce',
+          api: 'hal',
         },
         false,
         urlPOST
       );
 
       const config = {
-        method: "post",
+        method: 'post',
         url: POST_URL,
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         data: reqAuthFormData,
       };
@@ -41,7 +41,7 @@ const useWallet = (wallet, publicAddress) => {
       }
       throw false;
     } catch (error) {
-      toast("Your wallet is not connected any AesirX account.");
+      toast('Your wallet is not connected any AesirX account.');
       return false;
     }
   };
@@ -57,21 +57,21 @@ const useWallet = (wallet, publicAddress) => {
 
       const POST_URL = BaseRoute.__createRequestURL(
         {
-          webserviceClient: "site",
-          webserviceVersion: "1.0.0",
-          option: "member",
-          task: "walletLogin",
-          api: "hal",
+          webserviceClient: 'site',
+          webserviceVersion: '1.0.0',
+          option: 'member',
+          task: 'walletLogin',
+          api: 'hal',
         },
         false,
         urlPOST
       );
 
       const config = {
-        method: "post",
+        method: 'post',
         url: POST_URL,
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         data: reqAuthFormData,
       };
@@ -79,16 +79,13 @@ const useWallet = (wallet, publicAddress) => {
 
       if (data?.result) {
         if (window.opener != null) {
-          window.opener.postMessage(
-            { walletResponse: queryString.stringify(data.result) },
-            "*"
-          );
+          window.opener.postMessage({ walletResponse: queryString.stringify(data.result) }, '*');
         }
       } else {
         throw false;
       }
     } catch (error) {
-      toast("Your wallet is not registered");
+      toast('Your wallet is not registered');
       return false;
     }
   };

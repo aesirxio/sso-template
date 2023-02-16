@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { detectConcordiumProvider } from "@concordium/browser-wallet-api-helpers";
-import logo from "./../../images/concordium.png";
-import useWallet from "../../hook/useWallet";
+import React, { useState } from 'react';
+import { detectConcordiumProvider } from '@concordium/browser-wallet-api-helpers';
+import logo from './../../images/concordium.png';
+import useWallet from '../../hook/useWallet';
 
 const SignMessageConcordium = ({ accountAddress }) => {
-  const wallet = "concordium";
+  const wallet = 'concordium';
 
   const { getWalletNonce, verifySignature } = useWallet(wallet, accountAddress);
 
