@@ -11,12 +11,12 @@ module.exports = {
     xs: 0,
   },
   tablet: {
-    sm: "576px",
-    md: "768px",
+    sm: '576px',
+    md: '768px',
   },
   desktop: {
-    lg: "992px",
-    xl: "1200px",
-    xxl: "1400px",
+    lg: '992px',
+    xl: '1200px',
+    xxl: '1400px',
   },
 };

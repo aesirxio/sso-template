@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { detectConcordiumProvider } from "@concordium/browser-wallet-api-helpers";
-import ConnectConcordium from "./connect";
-import SignMessageConcordium from "./sign";
+import React, { useEffect, useState } from 'react';
+import { detectConcordiumProvider } from '@concordium/browser-wallet-api-helpers';
+import ConnectConcordium from './connect';
+import SignMessageConcordium from './sign';
 
 const Concordium = () => {
   const [accountAddress, setAccountAddress] = useState();

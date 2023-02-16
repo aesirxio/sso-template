@@ -1,5 +1,5 @@
-import React from "react";
-import logo from "./../../images/concordium.png";
+import React from 'react';
+import logo from './../../images/concordium.png';
 
 const ConnectConcordium = ({ handleConnect }) => {
   return (

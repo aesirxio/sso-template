@@ -1,4 +1,4 @@
-import { icon } from "@fortawesome/fontawesome-svg-core";
+import { icon } from '@fortawesome/fontawesome-svg-core';
 export function fontAwesomeLoad(element, elementIcon) {
   let list = document.querySelectorAll(element);
   if (list) {
