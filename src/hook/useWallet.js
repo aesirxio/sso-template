@@ -80,6 +80,14 @@ const useWallet = (wallet, publicAddress) => {
       if (data?.result) {
         if (window.opener != null) {
           window.opener.postMessage({ walletResponse: queryString.stringify(data.result) }, '*');
+        } else {
+          if (data?.result?.recirect_uri) {
+            window.location.href = `${withHttp(
+              data?.result?.recirect_uri
+            )}?state=sso&${queryString.stringify(data.result)}&lastVisitDate=0`;
+          } else {
+            throw false;
+          }
         }
       } else {
         throw false;
