@@ -75,11 +75,16 @@ const useWallet = (wallet, publicAddress) => {
         },
         data: reqAuthFormData,
       };
-      const { data } = await axios(config);
 
+      let searchParams = new URLSearchParams(window.location.search);
+
+      const { data } = await axios(config);
       if (data?.result) {
         if (window.opener != null) {
           window.opener.postMessage({ walletResponse: queryString.stringify(data.result) }, '*');
+        } else if (searchParams.has('return')) {
+          const decoded = atob(searchParams.get('return'));
+          window.location.href = `${withHttp(decoded)}`;
         } else {
           if (data?.result?.recirect_uri) {
             window.location.href = `${withHttp(
