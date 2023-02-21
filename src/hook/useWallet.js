@@ -49,10 +49,12 @@ const useWallet = (wallet, publicAddress) => {
   const verifySignature = async (wallet, publicAddress, signature) => {
     try {
       const urlPOST = window.location.origin;
+      const returnParams = document.querySelector('.login form input[name="return"]')?.value;
       const reqAuthFormData = {
         wallet: wallet,
         publicAddress: publicAddress,
         signature: signature,
+        return: returnParams ?? null,
       };
 
       const POST_URL = BaseRoute.__createRequestURL(
