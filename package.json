@@ -17,7 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "@concordium/browser-wallet-api-helpers": "^2.2.0",
-    "aesirx-dma-lib": "^1.7.4",
+    "aesirx-dma-lib": "^1.7.11",
     "bootstrap": "^5.2.3",
     "ethers": "^5.7.2",
     "react": "^18.2.0",
