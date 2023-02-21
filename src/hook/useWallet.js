@@ -54,7 +54,6 @@ const useWallet = (wallet, publicAddress) => {
         wallet: wallet,
         publicAddress: publicAddress,
         signature: signature,
-        return: returnParams ?? null,
       };
 
       const POST_URL = BaseRoute.__createRequestURL(
@@ -64,6 +63,7 @@ const useWallet = (wallet, publicAddress) => {
           option: 'member',
           task: 'walletLogin',
           api: 'hal',
+          return: returnParams ?? null,
         },
         false,
         urlPOST
