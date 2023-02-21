@@ -82,6 +82,9 @@ const useWallet = (wallet, publicAddress) => {
       if (data?.result) {
         if (window.opener != null) {
           window.opener.postMessage({ walletResponse: queryString.stringify(data.result) }, '*');
+        } else if (data?.result?.return) {
+          const decoded = atob(data?.result?.return);
+          window.location.href = `${withHttp(decoded)}`;
         } else if (searchParams.has('return')) {
           const decoded = atob(searchParams.get('return'));
           window.location.href = `${withHttp(decoded)}`;
