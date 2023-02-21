@@ -16,7 +16,7 @@
   "author": "AesirX",
   "license": "ISC",
   "dependencies": {
-    "@concordium/browser-wallet-api-helpers": "^2.0.0",
+    "@concordium/browser-wallet-api-helpers": "^2.2.0",
     "aesirx-dma-lib": "^1.7.4",
     "bootstrap": "^5.2.3",
     "ethers": "^5.7.2",
