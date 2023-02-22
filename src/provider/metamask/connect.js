@@ -14,9 +14,9 @@ const ConnectMetamask = () => {
               disabled={!connector.ready}
               key={connector.id}
               onClick={() => connect({ connector })}
-              className="btn btn-primary"
+              className="btn btn-white bg-white border fw-semibold"
             >
-              <img src={Logometamask} alt="logo-metamask" />
+              <img className="me-2" src={Logometamask} alt="logo-metamask" />
               Connect to {connector.name}
               {isLoading && connector.id === pendingConnector?.id && ' (connecting)'}
             </button>

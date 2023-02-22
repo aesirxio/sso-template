@@ -13,12 +13,12 @@ const client = createClient({
 const ProviverLogin = () => {
   return (
     <>
-      <div className="control-group">
+      <div className="control-group mb-3">
         <WagmiConfig client={client}>
           <Metamask />
         </WagmiConfig>
       </div>
-      <div className="control-group">
+      <div className="control-group mb-3">
         <Concordium />
       </div>
       <ToastComponent />

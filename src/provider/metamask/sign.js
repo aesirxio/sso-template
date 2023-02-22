@@ -29,8 +29,12 @@ const SignMessage = () => {
 
   return (
     <>
-      <button disabled={isLoading} className="btn btn-primary" onClick={handleSignMessage}>
-        <img src={Logometamask} alt="logo-metamask" />
+      <button
+        disabled={isLoading}
+        className="btn btn-white bg-white border fw-semibold"
+        onClick={handleSignMessage}
+      >
+        <img className="me-2" src={Logometamask} alt="logo-metamask" />
         Sign in via MetaMask
       </button>
     </>
