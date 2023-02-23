@@ -60,7 +60,7 @@ $logo           = $params->get('logo');
 					</div>
 				</div>
 			<?php endif; ?>
-			<div class="control-group">
+			<div class="control-group mb-0">
 				<div class="controls">
 					<button type="submit" class="btn btn-success bg-success text-white text-uppercase fw-bold">
 						<?php echo JText::_('JLOGIN'); ?>
