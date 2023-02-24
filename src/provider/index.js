@@ -6,8 +6,7 @@ import Concordium from './concordium';
 import ToastComponent from '../components/Toast';
 
 const client = createClient({
-    autoConnect: true,
-    provider: getDefaultProvider(),
+    autoConnect: true, provider: getDefaultProvider(),
 });
 
 const ProviderLogin = () => {
@@ -22,26 +21,18 @@ const ProviderLogin = () => {
     const hasMetamask = login.includes("metamask");
     const hasConcordium = login.includes("concordium");
 
-    return (
-        <>
-            {hasMetamask
-                ? <div className="control-group">
-                    <WagmiConfig client={client}>
-                        <Metamask/>
-                    </WagmiConfig>
-                </div>
-                : ''
-            }
+    return (<>
+            {hasMetamask ? <div className="control-group">
+                <WagmiConfig client={client}>
+                    <Metamask/>
+                </WagmiConfig>
+            </div> : ''}
 
-            {hasConcordium
-                ? <div className="control-group">
-                    <Concordium/>
-                </div>
-                : ''
-            }
+            {hasConcordium ? <div className="control-group">
+                <Concordium/>
+            </div> : ''}
             <ToastComponent/>
-        </>
-    );
+        </>);
 };
 
 export default ProviderLogin;
