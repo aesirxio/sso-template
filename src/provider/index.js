@@ -22,17 +22,17 @@ const ProviderLogin = () => {
     const hasConcordium = login.includes("concordium");
 
     return (<>
-            {hasMetamask ? <div className="control-group">
-                <WagmiConfig client={client}>
-                    <Metamask/>
-                </WagmiConfig>
-            </div> : ''}
+        {hasMetamask ? <div className="control-group">
+            <WagmiConfig client={client}>
+                <Metamask/>
+            </WagmiConfig>
+        </div> : <></>}
 
-            {hasConcordium ? <div className="control-group">
-                <Concordium/>
-            </div> : ''}
-            <ToastComponent/>
-        </>);
+        {hasConcordium ? <div className="control-group">
+            <Concordium/>
+        </div> : <></>}
+        <ToastComponent/>
+    </>);
 };
 
 export default ProviderLogin;
