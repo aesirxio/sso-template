@@ -12,4 +12,4 @@ import ReactDOM from 'react-dom';
 import ProviderLogin from '../provider';
 
 const el = document.getElementById('providerlogin');
-ReactDOM.render(<ProviderLogin/>, el);
+ReactDOM.render(<ProviderLogin />, el);
