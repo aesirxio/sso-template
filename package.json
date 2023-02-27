@@ -24,7 +24,7 @@
     "react-dom": "^18.2.0",
     "react-toastify": "^9.1.1",
     "wagmi": "^0.8.10",
-    "web3": "^1.8.1"
+    "web3": "^1.8.2"
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
