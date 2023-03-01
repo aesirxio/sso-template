@@ -37,7 +37,7 @@
     "babel-loader": "^9.1.2",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-env": "^1.7.0",
-    "browser-sync": "^2.27.12",
+    "browser-sync": "^2.28.1",
     "browser-sync-webpack-plugin": "^2.3.0",
     "critical": "^2.0.0",
     "critical-css-webpack-plugin": "^3.0.0",
