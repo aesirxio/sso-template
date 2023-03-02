@@ -24,7 +24,7 @@ const ProviderLogin = () => {
   return (
     <>
       {hasMetamask ? (
-        <div className="control-group">
+        <div className="control-group mb-3">
           <WagmiConfig client={client}>
             <Metamask />
           </WagmiConfig>
@@ -34,7 +34,7 @@ const ProviderLogin = () => {
       )}
 
       {hasConcordium ? (
-        <div className="control-group">
+        <div className="control-group mb-3">
           <Concordium />
         </div>
       ) : (

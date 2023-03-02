@@ -38,7 +38,7 @@ $logo           = $params->get('logo');
 	<?php if (($this->params->get('logindescription_show') == 1 && str_replace(' ', '', $this->params->get('login_description')) != '') || $this->params->get('login_image') != '') : ?>
 		</div>
 	<?php endif; ?>
-	<h1>
+	<h1 class="fw-semibold">
 		Welcome to<div class="logo-login"><div class="custom"><img src="<?php echo $this->baseurl; ?>/<?php echo htmlspecialchars($logo, ENT_QUOTES); ?>"  alt="<?php echo htmlspecialchars($this->params->get('sitetitle')); ?>" /></div></div>SSO
 		<br/>Sign In to getting started.
 	</h1>
@@ -63,7 +63,7 @@ $logo           = $params->get('logo');
 
 		if ($showRegularLogin):
 		?>
-	<p class="txt_or"><span>or</span></p>
+	<div class="txt_or my-3"><span class="font-inter fw-medium bg-white px-3 py-2 d-inline-block">OR</span></div>
 	<form action="<?php echo JRoute::_('index.php?option=com_users&task=user.login'); ?>" method="post" class="form-validate form-horizontal well">
 		<fieldset>
 			<?php echo $this->form->renderFieldset('credentials'); ?>
@@ -71,7 +71,7 @@ $logo           = $params->get('logo');
 				<?php echo $this->form->renderField('secretkey'); ?>
 			<?php endif; ?>
 			<?php if (JPluginHelper::isEnabled('system', 'remember')) : ?>
-				<div class="control-group">
+				<div class="control-group form-checkbox">
 					<div class="control-label">
 						<label for="remember">
 							<?php echo JText::_('COM_USERS_LOGIN_REMEMBER_ME'); ?>
@@ -82,9 +82,9 @@ $logo           = $params->get('logo');
 					</div>
 				</div>
 			<?php endif; ?>
-			<div class="control-group">
+			<div class="control-group mb-0">
 				<div class="controls">
-					<button type="submit" class="btn btn-primary">
+					<button type="submit" class="btn btn-success bg-success text-white text-uppercase fw-bold">
 						<?php echo JText::_('JLOGIN'); ?>
 					</button>
 				</div>

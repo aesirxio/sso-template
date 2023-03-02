@@ -13,3 +13,53 @@
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/maps";
 @import "~bootstrap/scss/utilities";
+
+//customize Class
+$utilities: map-merge(
+  $utilities,
+  (
+    "z": (
+      property: z-index,
+      class: z,
+      values: (
+        n1: -1,
+        0: 0,
+        1: 9,
+        2: 99,
+        3: 999,
+        4: 9999,
+      ),
+    ),
+    "font-family": (
+      property: font-family,
+      class: font,
+      values: (
+        inter: "Inter",
+      ),
+    ),
+    "object": (
+      property: object-fit,
+      class: ob,
+      values: (
+        "cover": cover,
+        "contain": contain,
+      ),
+    ),
+    "font-weight": (
+      property: font-weight,
+      class: fw,
+      values: (
+        light: $font-weight-light,
+        lighter: $font-weight-lighter,
+        normal: $font-weight-normal,
+        medium: 500,
+        semibold: 600,
+        bold: $font-weight-bold,
+        bolder: $font-weight-bolder,
+      ),
+    ),
+  )
+);
+
+// Utilities
+@import "~bootstrap/scss/utilities/api";
