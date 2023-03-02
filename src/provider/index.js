@@ -10,20 +10,39 @@ const client = createClient({
   provider: getDefaultProvider(),
 });
 
-const ProviverLogin = () => {
+const ProviderLogin = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  let login = ['concordium', 'metamask', 'regular'];
+
+  if (urlParams.has('return')) {
+    login = new URL(atob(urlParams.get('return'))).searchParams.getAll('login[]');
+  }
+  console.log(urlParams);
+  const hasMetamask = login.includes('metamask');
+  const hasConcordium = login.includes('concordium');
+
   return (
     <>
-      <div className="control-group mb-3">
-        <WagmiConfig client={client}>
-          <Metamask />
-        </WagmiConfig>
-      </div>
-      <div className="control-group mb-3">
-        <Concordium />
-      </div>
+      {hasMetamask ? (
+        <div className="control-group mb-3">
+          <WagmiConfig client={client}>
+            <Metamask />
+          </WagmiConfig>
+        </div>
+      ) : (
+        <></>
+      )}
+
+      {hasConcordium ? (
+        <div className="control-group mb-3">
+          <Concordium />
+        </div>
+      ) : (
+        <></>
+      )}
       <ToastComponent />
     </>
   );
 };
 
-export default ProviverLogin;
+export default ProviderLogin;

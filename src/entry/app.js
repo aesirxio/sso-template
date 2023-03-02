@@ -9,7 +9,7 @@ import './app.scss';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ProviverLogin from '../provider';
+import ProviderLogin from '../provider';
 
 const el = document.getElementById('providerlogin');
-ReactDOM.render(<ProviverLogin />, el);
+ReactDOM.render(<ProviderLogin />, el);

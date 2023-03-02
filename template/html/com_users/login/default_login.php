@@ -7,6 +7,9 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
+use Joomla\CMS\Factory;
+use Joomla\Uri\Uri;
+
 defined('_JEXEC') or die;
 
 JHtml::_('behavior.keepalive');
@@ -41,6 +44,25 @@ $logo           = $params->get('logo');
 	</h1>
 	<div class="login">
 	<div class="masklogin" id="providerlogin"></div>
+		<?php
+		$input = Factory::getApplication()->input;
+		$showRegularLogin = true;
+
+		$return = $input->getBase64('return');
+
+		if ($return)
+		{
+			$returnUri = new Uri(base64_decode($return));
+
+			if (is_array($returnUri->getVar('login'))
+				&& !in_array('regular', $returnUri->getVar('login')))
+			{
+				$showRegularLogin = false;
+			}
+		}
+
+		if ($showRegularLogin):
+		?>
 	<div class="txt_or my-3"><span class="font-inter fw-medium bg-white px-3 py-2 d-inline-block">OR</span></div>
 	<form action="<?php echo JRoute::_('index.php?option=com_users&task=user.login'); ?>" method="post" class="form-validate form-horizontal well">
 		<fieldset>
@@ -72,5 +94,6 @@ $logo           = $params->get('logo');
 			<?php echo JHtml::_('form.token'); ?>
 		</fieldset>
 	</form>
+		<?php endif; ?>
 	</div>
 </div>
