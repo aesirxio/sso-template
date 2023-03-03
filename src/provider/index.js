@@ -1,14 +1,8 @@
 import React from 'react';
 import Metamask from './metamask';
-import { WagmiConfig, createClient } from 'wagmi';
-import { getDefaultProvider } from 'ethers';
+
 import Concordium from './concordium';
 import ToastComponent from '../components/Toast';
-
-const client = createClient({
-  autoConnect: true,
-  provider: getDefaultProvider(),
-});
 
 const ProviderLogin = () => {
   const urlParams = new URLSearchParams(window.location.search);
@@ -18,28 +12,23 @@ const ProviderLogin = () => {
     login = new URL(atob(urlParams.get('return'))).searchParams.getAll('login[]');
   }
 
-  const hasMetamask = login.includes('metamask');
-  const hasConcordium = login.includes('concordium');
+  const hasMetamask = true;
+  const hasConcordium = true;
 
   return (
     <>
-      {hasMetamask ? (
+      {hasMetamask && (
         <div className="control-group mb-3">
-          <WagmiConfig client={client}>
-            <Metamask />
-          </WagmiConfig>
+          <Metamask />
         </div>
-      ) : (
-        <></>
       )}
 
-      {hasConcordium ? (
+      {hasConcordium && (
         <div className="control-group mb-3">
           <Concordium />
         </div>
-      ) : (
-        <></>
       )}
+
       <ToastComponent />
     </>
   );

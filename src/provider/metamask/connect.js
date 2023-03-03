@@ -1,28 +1,24 @@
-import React from 'react';
-import Logometamask from './../../images/Icon.png';
-
-import { useConnect } from 'wagmi';
+import { useWeb3Modal } from '@web3modal/react';
+import React, { useState } from 'react';
 
 const ConnectMetamask = () => {
-  const { connect, connectors, error, isLoading, pendingConnector } = useConnect();
+  const [loading, setLoading] = useState(false);
+  const { open } = useWeb3Modal();
+
+  async function onOpen() {
+    setLoading(true);
+    await open();
+    setLoading(false);
+  }
+
   return (
-    <div>
-      {connectors.map(
-        (connector) =>
-          connector.ready && (
-            <button
-              disabled={!connector.ready}
-              key={connector.id}
-              onClick={() => connect({ connector })}
-              className="btn btn-white bg-white border fw-semibold"
-            >
-              <img className="me-2" src={Logometamask} alt="logo-metamask" />
-              Connect to {connector.name}
-              {isLoading && connector.id === pendingConnector?.id && ' (connecting)'}
-            </button>
-          )
-      )}
-    </div>
+    <button
+      onClick={onOpen}
+      disabled={loading}
+      className="btn btn-white bg-white border fw-semibold"
+    >
+      {loading ? 'Waiting for signing...' : 'Connect to Ethereum wallets'}
+    </button>
   );
 };
 

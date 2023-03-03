@@ -8,8 +8,8 @@
 import './app.scss';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ProviderLogin from '../provider';
-
-const el = document.getElementById('providerlogin');
-ReactDOM.render(<ProviderLogin />, el);
+import { createRoot } from 'react-dom/client';
+const container = document.getElementById('providerlogin');
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+root.render(<ProviderLogin />);

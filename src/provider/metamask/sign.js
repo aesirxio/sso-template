@@ -2,19 +2,17 @@ import React, { useRef } from 'react';
 import { useSignMessage } from 'wagmi';
 import { verifyMessage } from 'ethers/lib/utils';
 
-import Logometamask from './../../images/Icon.png';
 import useWallet from '../../hook/useWallet';
 import { useAccount } from 'wagmi';
 
 const SignMessage = () => {
   const wallet = 'metamask';
-  const { address } = useAccount();
+  const { address, connector } = useAccount();
   const { getWalletNonce, verifySignature } = useWallet(wallet, address);
 
   const { isLoading, signMessage } = useSignMessage({
     async onSuccess(data, variables) {
       const address = verifyMessage(variables.message, data);
-
       await verifySignature(wallet, address, data);
     },
   });
@@ -34,8 +32,7 @@ const SignMessage = () => {
         className="btn btn-white bg-white border fw-semibold"
         onClick={handleSignMessage}
       >
-        <img className="me-2" src={Logometamask} alt="logo-metamask" />
-        Sign in via MetaMask
+        {isLoading ? 'Waiting for signing...' : 'Sign in'} via {connector?.name}
       </button>
     </>
   );

@@ -1,23 +1,26 @@
 import React, { useState } from 'react';
-import { detectConcordiumProvider } from '@concordium/browser-wallet-api-helpers';
 import logo from './../../images/concordium.png';
 import useWallet from '../../hook/useWallet';
 
-const SignMessageConcordium = ({ accountAddress }) => {
+const SignMessageConcordium = ({ account, connection }) => {
+  const [loading, setLoading] = useState(false);
   const wallet = 'concordium';
 
-  const { getWalletNonce, verifySignature } = useWallet(wallet, accountAddress);
+  const { getWalletNonce, verifySignature } = useWallet(wallet, account);
 
   const handleConnect = async () => {
+    setLoading(true);
     const nonce = await getWalletNonce();
     if (nonce) {
-      const provider = await detectConcordiumProvider();
-      const signature = await provider.signMessage(accountAddress, `${nonce}`);
+      console.log(account, `${nonce}`);
+      const signature = await connection.signAndSendTransaction(account, `${nonce}`);
 
       if (signature) {
-        await verifySignature(wallet, accountAddress, signature);
+        await verifySignature(wallet, account, signature);
       }
     }
+
+    setLoading(false);
   };
 
   return (
@@ -26,7 +29,8 @@ const SignMessageConcordium = ({ accountAddress }) => {
       onClick={handleConnect}
     >
       <img className="me-2" width={20} height={21} src={logo} alt="logo-concordium" />
-      Sign in via Concordium
+
+      {loading ? 'Waiting...' : 'Sign in via Concordium'}
     </button>
   );
 };
