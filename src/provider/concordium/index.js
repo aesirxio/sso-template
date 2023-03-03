@@ -8,7 +8,7 @@ import {
   useConnect,
   withJsonRpcClient,
   WithWalletConnector,
-} from '@vietredweb/react-components';
+} from '@aesirx/react-components';
 import { toast } from 'react-toastify';
 
 const Concordium = () => {
