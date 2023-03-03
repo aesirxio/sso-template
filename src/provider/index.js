@@ -12,8 +12,8 @@ const ProviderLogin = () => {
     login = new URL(atob(urlParams.get('return'))).searchParams.getAll('login[]');
   }
 
-  const hasMetamask = true;
-  const hasConcordium = true;
+  const hasMetamask = login.includes('metamask');
+  const hasConcordium = login.includes('concordium');
 
   return (
     <>
