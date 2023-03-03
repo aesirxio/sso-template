@@ -2,7 +2,7 @@ import {
   BrowserWalletConnector,
   ephemeralConnectorType,
   WalletConnectConnector,
-} from '@concordium/react-components';
+} from '@aesirx/react-components';
 
 const TESTNET_GENESIS_BLOCK_HASH =
   '4221332d34e1694168c2a0c0b3fd0f273809612cb13d000d5c2e00e85f50f796';
