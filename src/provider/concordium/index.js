@@ -8,7 +8,8 @@ import {
   useConnect,
   withJsonRpcClient,
   WithWalletConnector,
-} from '@concordium/react-components';
+} from '@vietredweb/react-components';
+import { toast } from 'react-toastify';
 
 const Concordium = () => {
   return (
@@ -47,11 +48,20 @@ const ConcordiumApp = (props) => {
         return status.genesisBlock;
       })
         .then((hash) => {
+          if (process.env.concordiumNetwork === 'testnet' && hash !== TESTNET.genesisHash) {
+            throw new Error(`Please change the network to Testnet in Wallet`);
+          }
+
+          if (process.env.concordiumNetwork === 'mainnet' && hash !== MAINNET.genesisHash) {
+            throw new Error(`Please change the network to Mainnet in Wallet`);
+          }
           setRpcGenesisHash(hash);
+
           setRpcError('');
         })
         .catch((err) => {
           setRpcGenesisHash(undefined);
+          toast(err.message);
           setRpcError(errorString(err));
         });
     }
@@ -66,8 +76,6 @@ const ConcordiumApp = (props) => {
   const handleOnConnect = async (connectorType) => {
     await setActiveConnectorType(connectorType);
   };
-
-  console.log('connection', connection);
 
   return (
     <>

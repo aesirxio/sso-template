@@ -13,7 +13,7 @@ const SignMessageConcordium = ({ account, connection }) => {
     const nonce = await getWalletNonce();
     if (nonce) {
       console.log(account, `${nonce}`);
-      const signature = await connection.signAndSendTransaction(account, `${nonce}`);
+      const signature = await connection.signMessage(account, `${nonce}`);
 
       if (signature) {
         await verifySignature(wallet, account, signature);
