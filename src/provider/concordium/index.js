@@ -8,6 +8,7 @@ import { useConnection } from './react-components/useConnection';
 import { useConnect } from './react-components/useConnect';
 import { withJsonRpcClient } from '@aesirx/wallet-connectors';
 import { toast } from 'react-toastify';
+import logo from './../../images/concordium.png';
 
 const Concordium = () => {
   return (
@@ -35,7 +36,7 @@ const ConcordiumApp = (props) => {
 
   const { connect } = useConnect(activeConnector, setConnection);
 
-  const [, setRpcGenesisHash] = useState();
+  const [rpcGenesisHash, setRpcGenesisHash] = useState();
   const [rpcError, setRpcError] = useState('');
 
   useEffect(() => {
@@ -60,7 +61,7 @@ const ConcordiumApp = (props) => {
         .catch((err) => {
           setRpcGenesisHash(undefined);
           toast(err.message);
-          setRpcError(errorString(err));
+          setRpcError(err.message);
         });
     }
   }, [connection, genesisHash, network]);
@@ -83,7 +84,17 @@ const ConcordiumApp = (props) => {
       {!account ? (
         <ConnectConcordium handleOnConnect={handleOnConnect} />
       ) : (
-        <SignMessageConcordium account={account} connection={connection} />
+        <>
+          {console.log('rpcGenesisHash', rpcGenesisHash)}
+          {rpcGenesisHash ? (
+            <SignMessageConcordium account={account} connection={connection} />
+          ) : (
+            <button className="btn btn-secondary bg-secondary fw-semibold text-white">
+              <img className="me-2" width={20} height={21} src={logo} alt="logo-concordium" />
+              {'Waiting...'}
+            </button>
+          )}
+        </>
       )}
 
       {rpcError && <div variant="warning">RPC error: {rpcError}</div>}
