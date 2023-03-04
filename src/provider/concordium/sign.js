@@ -14,9 +14,11 @@ const SignMessageConcordium = ({ account, connection }) => {
     if (nonce) {
       console.log(account, `${nonce}`);
       const signature = await connection.signMessage(account, `${nonce}`);
+      let convertedSignature =
+        typeof signature === 'object' && signature !== null ? signature : JSON.parse(signature);
 
       if (signature) {
-        await verifySignature(wallet, account, signature);
+        await verifySignature(wallet, account, convertedSignature);
       }
     }
 
