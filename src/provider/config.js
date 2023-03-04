@@ -1,8 +1,5 @@
-import {
-  BrowserWalletConnector,
-  ephemeralConnectorType,
-  WalletConnectConnector,
-} from '@aesirx/react-components';
+import { WalletConnectConnector, BrowserWalletConnector } from '@aesirx/wallet-connectors';
+import { ephemeralConnectorType } from './concordium/react-components/WithWalletConnector';
 
 const TESTNET_GENESIS_BLOCK_HASH =
   '4221332d34e1694168c2a0c0b3fd0f273809612cb13d000d5c2e00e85f50f796';

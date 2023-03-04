@@ -3,12 +3,10 @@ import SignMessageConcordium from './sign';
 import ConnectConcordium from './connect';
 
 import { TESTNET, MAINNET } from '../config';
-import {
-  useConnection,
-  useConnect,
-  withJsonRpcClient,
-  WithWalletConnector,
-} from '@aesirx/react-components';
+import { WithWalletConnector } from './react-components/WithWalletConnector';
+import { useConnection } from './react-components/useConnection';
+import { useConnect } from './react-components/useConnect';
+import { withJsonRpcClient } from '@aesirx/wallet-connectors';
 import { toast } from 'react-toastify';
 
 const Concordium = () => {
