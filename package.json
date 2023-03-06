@@ -16,9 +16,9 @@
   "author": "AesirX",
   "license": "ISC",
   "dependencies": {
+    "@aesirx/wallet-connectors": "https://gitpkg.now.sh/aesirxio/concordium-dapp-libraries/packages/wallet-connectors?main&scripts.postinstall=yarn%20install%20--ignore-scripts%20%--pure-lockfile%20%26%26%20yarn%20build",
     "@concordium/react-components": "^0.2.0",
     "@concordium/web-sdk": "^3.3.1",
-    "@aesirx/wallet-connectors": "https://gitpkg.now.sh/aesirxio/concordium-dapp-libraries/packages/wallet-connectors?main&scripts.postinstall=yarn%20install%20--ignore-scripts%20%--pure-lockfile%20%26%26%20yarn%20build",
     "@walletconnect/sign-client": "^2.4.6",
     "@web3modal/ethereum": "^2.1.2",
     "@web3modal/react": "^2.1.2",
@@ -27,6 +27,7 @@
     "bootstrap": "^5.2.3",
     "ethers": "^5",
     "react": "^18.2.0",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
     "react-toastify": "^9.1.1",
     "wagmi": "^0.11.7",
