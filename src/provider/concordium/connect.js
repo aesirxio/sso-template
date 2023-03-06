@@ -35,6 +35,8 @@ const ConnectConcordium = ({
               )}
               {!activeConnectorError && activeConnectorType && !activeConnector
                 ? 'Waiting ...'
+                : isMobile
+                ? 'Connect'
                 : 'QR Code'}
             </button>
           </div>
