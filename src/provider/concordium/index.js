@@ -79,13 +79,16 @@ const ConcordiumApp = (props) => {
   return (
     <>
       {activeConnectorError && <div>Connector error: {activeConnectorError}.</div>}
-      {!activeConnectorError && activeConnectorType && !activeConnector && 'Loading'}
 
       {!account ? (
-        <ConnectConcordium handleOnConnect={handleOnConnect} />
+        <ConnectConcordium
+          handleOnConnect={handleOnConnect}
+          activeConnectorError={activeConnectorError}
+          activeConnectorType={activeConnectorType}
+          activeConnector={activeConnector}
+        />
       ) : (
         <>
-          {console.log('rpcGenesisHash', rpcGenesisHash)}
           {rpcGenesisHash ? (
             <SignMessageConcordium account={account} connection={connection} />
           ) : (
