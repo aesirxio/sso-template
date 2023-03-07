@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import logo from './../../images/concordium.png';
 import useWallet from '../../hook/useWallet';
 import { toast } from 'react-toastify';
+import { shortenString } from '../../utils/shortenString';
 const SignMessageConcordium = ({ account, connection }) => {
   const [loading, setLoading] = useState(false);
   const wallet = 'concordium';
@@ -30,7 +31,8 @@ const SignMessageConcordium = ({ account, connection }) => {
   return (
     <>
       <p className="text-break">
-        <span className="fw-semibold">Connected Account:</span> ${account}
+        <span className="fw-semibold">Connected Account:</span>
+        <span className="ms-1">{account && shortenString(account)}</span>
       </p>
       <button
         className="btn btn-secondary bg-secondary fw-semibold text-white"
