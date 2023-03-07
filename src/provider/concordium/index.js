@@ -34,7 +34,7 @@ const ConcordiumApp = (props) => {
     genesisHashes
   );
 
-  const { connect } = useConnect(activeConnector, setConnection);
+  const { connect, connectError } = useConnect(activeConnector, setConnection);
 
   const [rpcGenesisHash, setRpcGenesisHash] = useState();
   const [rpcError, setRpcError] = useState('');
@@ -71,6 +71,12 @@ const ConcordiumApp = (props) => {
       connect();
     }
   }, [activeConnector]);
+
+  useEffect(() => {
+    if (connectError) {
+      toast(connectError);
+    }
+  }, [connectError]);
 
   const handleOnConnect = async (connectorType) => {
     await setActiveConnectorType(connectorType);
