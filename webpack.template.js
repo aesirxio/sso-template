@@ -44,9 +44,7 @@ module.exports = (env, argv) => {
     entry: entryData,
     plugins: [
       new DefinePlugin({
-        'process.env': {
-          REACT_APP_CONCORDIUM_NETWORK: JSON.stringify(process.env.REACT_APP_CONCORDIUM_NETWORK),
-        },
+        process: { env: JSON.stringify(process.env) },
       }),
       new HtmlWebpackPlugin({
         inject: false,
