@@ -6,19 +6,20 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-@import "~bootstrap/scss/functions";
-@import "./variables";
-@import "./mixin";
-@import "~bootstrap/scss/variables";
-@import "~bootstrap/scss/mixins";
-@import "~bootstrap/scss/maps";
-@import "~bootstrap/scss/utilities";
+@import '~bootstrap/scss/functions';
+@import './variables';
+@import './mixin';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/maps';
+@import '~bootstrap/scss/utilities';
+@import '~bootstrap/scss/spinners';
 
 //customize Class
 $utilities: map-merge(
   $utilities,
   (
-    "z": (
+    'z': (
       property: z-index,
       class: z,
       values: (
@@ -30,22 +31,22 @@ $utilities: map-merge(
         4: 9999,
       ),
     ),
-    "font-family": (
+    'font-family': (
       property: font-family,
       class: font,
       values: (
-        inter: "Inter",
+        inter: 'Inter',
       ),
     ),
-    "object": (
+    'object': (
       property: object-fit,
       class: ob,
       values: (
-        "cover": cover,
-        "contain": contain,
+        'cover': cover,
+        'contain': contain,
       ),
     ),
-    "font-weight": (
+    'font-weight': (
       property: font-weight,
       class: fw,
       values: (
@@ -62,4 +63,4 @@ $utilities: map-merge(
 );
 
 // Utilities
-@import "~bootstrap/scss/utilities/api";
+@import '~bootstrap/scss/utilities/api';
