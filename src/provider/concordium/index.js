@@ -48,20 +48,13 @@ const ConcordiumApp = (props) => {
         return status.genesisBlock;
       })
         .then((hash) => {
-          console.log('CONCORDIUM_NETWORK', process.env.REACT_APP_CONCORDIUM_NETWORK);
-          console.log('hash', hash);
+          console.log('NODE_ENV', process.env.NODE_ENV);
 
-          if (
-            process.env.REACT_APP_CONCORDIUM_NETWORK === 'testnet' &&
-            hash !== TESTNET.genesisHash
-          ) {
+          if (process.env.NODE_ENV === 'development' && hash !== TESTNET.genesisHash) {
             throw new Error(`Please change the network to Testnet in Wallet`);
           }
 
-          if (
-            process.env.REACT_APP_CONCORDIUM_NETWORK === 'mainnet' &&
-            hash !== MAINNET.genesisHash
-          ) {
+          if (process.env.NODE_ENV === 'production' && hash !== MAINNET.genesisHash) {
             throw new Error(`Please change the network to Mainnet in Wallet`);
           }
           setRpcGenesisHash(hash);
