@@ -47,6 +47,8 @@ const ConcordiumApp = (props) => {
         return status.genesisBlock;
       })
         .then((hash) => {
+          console.log('CONCORDIUM_NETWORK', CONCORDIUM_NETWORK);
+          console.log('hash', hash);
           if (CONCORDIUM_NETWORK === 'testnet' && hash !== TESTNET.genesisHash) {
             throw new Error(`Please change the network to Testnet in Wallet`);
           }
