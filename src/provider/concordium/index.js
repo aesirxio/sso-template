@@ -48,6 +48,9 @@ const ConcordiumApp = (props) => {
         return status.genesisBlock;
       })
         .then((hash) => {
+          console.log('CONCORDIUM_NETWORK', process.env.REACT_APP_CONCORDIUM_NETWORK);
+          console.log('hash', hash);
+
           if (
             process.env.REACT_APP_CONCORDIUM_NETWORK === 'testnet' &&
             hash !== TESTNET.genesisHash
