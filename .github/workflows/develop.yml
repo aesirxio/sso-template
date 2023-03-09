@@ -10,7 +10,7 @@ jobs:
     environment: develop
     env:
       CI: false
-      CONCORDIUM_NETWORK: ${{ secrets.CONCORDIUM_NETWORK }}
+      REACT_APP_CONCORDIUM_NETWORK: ${{ secrets.REACT_APP_CONCORDIUM_NETWORK }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3

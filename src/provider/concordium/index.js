@@ -8,11 +8,12 @@ import { useConnection } from './react-components/useConnection';
 import { useConnect } from './react-components/useConnect';
 import { withJsonRpcClient } from '@aesirx/wallet-connectors';
 import { toast } from 'react-toastify';
-import logo from './../../images/concordium.png';
 
 const Concordium = () => {
   return (
-    <WithWalletConnector network={MAINNET}>
+    <WithWalletConnector
+      network={process.env.REACT_APP_CONCORDIUM_NETWORK === 'testnet' ? TESTNET : MAINNET}
+    >
       {(props) => <ConcordiumApp {...props} />}
     </WithWalletConnector>
   );
@@ -47,11 +48,17 @@ const ConcordiumApp = (props) => {
         return status.genesisBlock;
       })
         .then((hash) => {
-          if (CONCORDIUM_NETWORK === 'testnet' && hash !== TESTNET.genesisHash) {
+          if (
+            process.env.REACT_APP_CONCORDIUM_NETWORK === 'testnet' &&
+            hash !== TESTNET.genesisHash
+          ) {
             throw new Error(`Please change the network to Testnet in Wallet`);
           }
 
-          if (CONCORDIUM_NETWORK === 'mainnet' && hash !== MAINNET.genesisHash) {
+          if (
+            process.env.REACT_APP_CONCORDIUM_NETWORK === 'mainnet' &&
+            hash !== MAINNET.genesisHash
+          ) {
             throw new Error(`Please change the network to Mainnet in Wallet`);
           }
           setRpcGenesisHash(hash);
