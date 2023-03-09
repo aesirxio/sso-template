@@ -40,7 +40,6 @@ const ConcordiumApp = (props) => {
   const [rpcError, setRpcError] = useState('');
 
   useEffect(() => {
-    console.log('process.env', process.env);
     if (connection) {
       setRpcGenesisHash(undefined);
       withJsonRpcClient(connection, async (rpc) => {
