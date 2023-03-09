@@ -10,7 +10,7 @@ jobs:
     environment: develop
     env:
       CI: false
-      concordiumNetwork: ${{ secrets.concordiumNetwork }}
+      concordiumNetwork: ${{ secrets.CONCORDIUMNETWORK }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
