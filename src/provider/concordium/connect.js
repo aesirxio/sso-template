@@ -33,11 +33,17 @@ const ConnectConcordium = ({
               {isMobile && (
                 <img className="me-2" width={20} height={21} src={logo} alt="logo-concordium" />
               )}
-              {!activeConnectorError && activeConnectorType && !activeConnector
-                ? 'Waiting ...'
-                : isMobile
-                ? 'Connect'
-                : 'QR Code'}
+              {!activeConnectorError && activeConnectorType && !activeConnector ? (
+                <span
+                  className="spinner-border spinner-border-sm me-1"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+              ) : isMobile ? (
+                'Connect'
+              ) : (
+                'QR Code'
+              )}
             </button>
           </div>
         </div>

@@ -98,15 +98,27 @@ const ConcordiumApp = (props) => {
           {rpcGenesisHash ? (
             <SignMessageConcordium account={account} connection={connection} />
           ) : (
-            <button className="btn btn-secondary bg-secondary fw-semibold text-white">
-              <img className="me-2" width={20} height={21} src={logo} alt="logo-concordium" />
-              {'Waiting...'}
-            </button>
+            <div className="p-2 bg-white border fw-semibold text-center rounded-2">
+              <div className="pb-2">Connect to Concordium</div>
+              <div className="d-flex">
+                <button className="btn btn-secondary bg-secondary fw-semibold text-white w-50 py-3">
+                  <span
+                    className="spinner-border spinner-border-sm me-1"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                </button>
+              </div>
+            </div>
           )}
         </>
       )}
 
-      {rpcError && <div variant="warning">RPC error: {rpcError}</div>}
+      {rpcError && (
+        <div variant="warning" className="mt-1">
+          RPC error: {rpcError}
+        </div>
+      )}
     </>
   );
 };
