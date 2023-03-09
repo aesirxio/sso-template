@@ -40,6 +40,7 @@ const ConcordiumApp = (props) => {
   const [rpcError, setRpcError] = useState('');
 
   useEffect(() => {
+    console.log('process.env', process.env);
     if (connection) {
       setRpcGenesisHash(undefined);
       withJsonRpcClient(connection, async (rpc) => {
@@ -47,11 +48,17 @@ const ConcordiumApp = (props) => {
         return status.genesisBlock;
       })
         .then((hash) => {
-          if (process.env.concordiumNetwork === 'testnet' && hash !== TESTNET.genesisHash) {
+          if (
+            process.env.REACT_APP_CONCORDIUM_NETWORK === 'testnet' &&
+            hash !== TESTNET.genesisHash
+          ) {
             throw new Error(`Please change the network to Testnet in Wallet`);
           }
 
-          if (process.env.concordiumNetwork === 'mainnet' && hash !== MAINNET.genesisHash) {
+          if (
+            process.env.REACT_APP_CONCORDIUM_NETWORK === 'mainnet' &&
+            hash !== MAINNET.genesisHash
+          ) {
             throw new Error(`Please change the network to Mainnet in Wallet`);
           }
           setRpcGenesisHash(hash);
@@ -86,7 +93,7 @@ const ConcordiumApp = (props) => {
     <>
       {activeConnectorError && <div>Connector error: {activeConnectorError}.</div>}
 
-      {!account ? (
+      {!account || rpcError ? (
         <ConnectConcordium
           handleOnConnect={handleOnConnect}
           activeConnectorError={activeConnectorError}
