@@ -11,9 +11,7 @@ import { toast } from 'react-toastify';
 
 const Concordium = () => {
   return (
-    <WithWalletConnector
-      network={process.env.REACT_APP_CONCORDIUM_NETWORK === 'testnet' ? TESTNET : MAINNET}
-    >
+    <WithWalletConnector network={process.env.NODE_ENV === 'development' ? TESTNET : MAINNET}>
       {(props) => <ConcordiumApp {...props} />}
     </WithWalletConnector>
   );
