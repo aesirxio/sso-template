@@ -4,7 +4,6 @@ import useWallet from '../../hook/useWallet';
 import { toast } from 'react-toastify';
 import { shortenString } from '../../utils/shortenString';
 const SignMessageConcordium = ({ account, connection }) => {
-  const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState('');
   const wallet = 'concordium';
 

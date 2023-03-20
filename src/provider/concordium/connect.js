@@ -10,7 +10,6 @@ const ConnectConcordium = ({
   activeConnectorType,
   activeConnector,
 }) => {
-  console.log('isConnecting', isConnecting);
   return (
     <>
       {osName === OsTypes.IOS && isMobile ? (
