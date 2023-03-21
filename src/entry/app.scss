@@ -7,22 +7,22 @@
  */
 
 // Layout & components
-@import "~bootstrap/scss/root";
-@import "~bootstrap/scss/reboot";
-@import "~bootstrap/scss/type";
-@import "~bootstrap/scss/images";
-@import "~bootstrap/scss/containers";
-@import "~bootstrap/scss/grid";
+@import '~bootstrap/scss/root';
+@import '~bootstrap/scss/reboot';
+@import '~bootstrap/scss/type';
+@import '~bootstrap/scss/images';
+@import '~bootstrap/scss/containers';
+@import '~bootstrap/scss/grid';
 // @import "~bootstrap/scss/tables";
-@import "~bootstrap/scss/forms";
-@import "~bootstrap/scss/buttons";
-@import "~bootstrap/scss/transitions";
-@import "~bootstrap/scss/dropdown";
-@import "~bootstrap/scss/button-group";
-@import "~bootstrap/scss/nav";
-@import "~bootstrap/scss/navbar";
-@import "~bootstrap/scss/alert";
-@import "~bootstrap/scss/close";
+@import '~bootstrap/scss/forms';
+@import '~bootstrap/scss/buttons';
+@import '~bootstrap/scss/transitions';
+@import '~bootstrap/scss/dropdown';
+@import '~bootstrap/scss/button-group';
+@import '~bootstrap/scss/nav';
+@import '~bootstrap/scss/navbar';
+@import '~bootstrap/scss/alert';
+@import '~bootstrap/scss/close';
 // @import "~bootstrap/scss/card";
 // @import "~bootstrap/scss/accordion";
 // @import "~bootstrap/scss/breadcrumb";
@@ -42,14 +42,14 @@
 // @import "~bootstrap/scss/placeholders";
 
 // Helpers
-@import "~bootstrap/scss/helpers";
+@import '~bootstrap/scss/helpers';
 
 // Layouts
-@import "../scss/layouts/header";
-@import "../scss/layouts/footer";
+@import '../scss/layouts/header';
+@import '../scss/layouts/footer';
 
 // Fonts
-@import "../fonts/fontface";
+@import '../fonts/fontface';
 
 * {
   font-smoothing: antialiased;
@@ -73,9 +73,9 @@ body {
         .txt_or {
           position: relative;
           text-align: center;
-          color: #8E8E8E;
-          &::before{
-            content:'';
+          color: #8e8e8e;
+          &::before {
+            content: '';
             position: absolute;
             width: 100%;
             top: 50%;
@@ -106,10 +106,10 @@ body {
           margin-bottom: 10px;
           font-weight: 600;
           color: $black;
-          .star{
+          .star {
             color: $danger;
           }
-          label[for="remember"] {
+          label[for='remember'] {
             margin-left: 30px;
             font-weight: 400;
           }
@@ -119,9 +119,9 @@ body {
             &:focus {
               box-shadow: 0 0 0 0.25rem rgba($success, 0.25);
             }
-            &[type="text"],
-            &[type="password"],
-            &[type="email"] {
+            &[type='text'],
+            &[type='password'],
+            &[type='email'] {
               width: 100%;
               background-color: $white;
               border: 1px solid #d5d5d5;
@@ -130,11 +130,9 @@ body {
               border-radius: 0.25rem;
               outline: 0;
             }
-            &[type="checkbox"] {
+            &[type='checkbox'] {
               &:checked {
-                background-image: escape-svg(
-                  $form-check-input-checked-bg-image
-                );
+                background-image: escape-svg($form-check-input-checked-bg-image);
                 background-color: $success;
               }
               outline: 0;
@@ -163,7 +161,7 @@ body {
           display: flex;
           align-items: center;
           justify-content: center;
-          &[title="Cancel"] {
+          &[title='Cancel'] {
             @include button-variant(
               $white /*background*/,
               #d5d5d5 /*border*/,
@@ -187,6 +185,26 @@ body {
           }
         }
       }
+    }
+  }
+}
+@include media-breakpoint-down(sm) {
+  body {
+    .body-wrap {
+      main {
+        width: 100%;
+        .body-login {
+          h1 {
+            font-size: 28px;
+          }
+        }
+        .login {
+          min-width: auto;
+        }
+      }
+    }
+    .walletconnect-modal__footer {
+      flex-wrap: wrap;
     }
   }
 }

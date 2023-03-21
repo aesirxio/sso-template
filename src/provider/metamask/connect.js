@@ -17,7 +17,18 @@ const ConnectMetamask = () => {
       disabled={loading}
       className="btn btn-white bg-white border fw-semibold"
     >
-      {loading ? 'Waiting for signing...' : 'Connect to Ethereum wallets'}
+      {loading ? (
+        <>
+          <span
+            className="spinner-border spinner-border-sm me-1"
+            role="status"
+            aria-hidden="true"
+          ></span>
+          Waiting for signing...
+        </>
+      ) : (
+        'Connect to Ethereum wallets'
+      )}
     </button>
   );
 };

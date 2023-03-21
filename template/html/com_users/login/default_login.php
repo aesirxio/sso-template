@@ -43,7 +43,14 @@ $logo           = $params->get('logo');
 		<br/>Sign In to getting started.
 	</h1>
 	<div class="login">
-	<div class="masklogin" id="providerlogin"></div>
+	<div class="masklogin" id="providerlogin">
+		<div class="position-relative text-center">
+			<span class="spinner-border spinner-border-lg me-1 text-secondary text-center"
+				role="status"
+				aria-hidden="true">
+			</span>
+		</div>
+	</div>
 		<?php
 		$input = Factory::getApplication()->input;
 		$showRegularLogin = true;
@@ -82,6 +89,7 @@ $logo           = $params->get('logo');
 					</div>
 				</div>
 			<?php endif; ?>
+			<p>Don't have an account? Register <a href="https://aesirx.io/" target="_blank">here</a></p>
 			<div class="control-group mb-0">
 				<div class="controls">
 					<button type="submit" class="btn btn-success bg-success text-white text-uppercase fw-bold">

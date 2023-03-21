@@ -22,13 +22,11 @@ const ProviderLogin = () => {
           <Metamask />
         </div>
       )}
-
       {hasConcordium && (
         <div className="control-group mb-3">
           <Concordium />
         </div>
       )}
-
       <ToastComponent />
     </>
   );
