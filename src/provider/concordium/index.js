@@ -33,7 +33,7 @@ const ConcordiumApp = (props) => {
     genesisHashes
   );
 
-  const { connect, connectError } = useConnect(activeConnector, setConnection);
+  const { connect, connectError, isConnecting } = useConnect(activeConnector, setConnection);
 
   const [rpcGenesisHash, setRpcGenesisHash] = useState();
   const [rpcError, setRpcError] = useState('');
@@ -82,13 +82,13 @@ const ConcordiumApp = (props) => {
   const handleOnConnect = async (connectorType) => {
     await setActiveConnectorType(connectorType);
   };
-
   return (
     <>
       {activeConnectorError && <div>Connector error: {activeConnectorError}.</div>}
 
       {!account || rpcError ? (
         <ConnectConcordium
+          isConnecting={isConnecting}
           handleOnConnect={handleOnConnect}
           activeConnectorError={activeConnectorError}
           activeConnectorType={activeConnectorType}
