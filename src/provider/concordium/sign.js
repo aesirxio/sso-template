@@ -47,7 +47,7 @@ const SignMessageConcordium = ({ account, connection }) => {
             ></span>
             <span className="ms-1">
               {status === 'sign'
-                ? 'Please Sign message on the wallet'
+                ? 'Please sign message on the wallet'
                 : `Please wait to connect...`}
             </span>
           </div>
