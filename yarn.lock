@@ -2873,10 +2873,10 @@
     buffer "6.0.3"
     valtio "1.9.0"
 
-"@web3modal/ethereum@^2.1.2":
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/@web3modal/ethereum/-/ethereum-2.1.3.tgz#9e13a2df8303b8241efd800e2f333a2f42329868"
-  integrity sha512-LUYAKP4FCjyQkyuo8luLWa6D40p23R+GBkc35Yrlgkc8f1c9ZbeAMkg6D3HD4A0KsacALfVcf/AQrDD35fZM2A==
+"@web3modal/ethereum@^2.2.2":
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@web3modal/ethereum/-/ethereum-2.2.2.tgz#aad8957deb4db4a3224b9e7bac538f1995bb5bcf"
+  integrity sha512-ksyGQsyK4pMU2Z83zZNo7HKPmjWkhcfK6K4ip+w3R/Rstcpqy/kHW/DUClXY76itu323EdesV6gBzASZ3CwBdQ==
 
 "@web3modal/react@^2.1.2":
   version "2.1.3"
