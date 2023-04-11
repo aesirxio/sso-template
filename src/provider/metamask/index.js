@@ -114,19 +114,12 @@ const chains = [
 ];
 
 const { provider } = configureChains(chains, [w3mProvider({ WALLET_CONNECT_PROJECT_ID })]);
-
 const wagmiClient = createClient({
   autoConnect: true,
-  connectors: w3mConnectors({
-    version: '1',
-    appName: 'web3Modal',
-    chains,
-    WALLET_CONNECT_PROJECT_ID,
-  }),
+  connectors: w3mConnectors({ WALLET_CONNECT_PROJECT_ID, version: 1, chains }),
   provider,
 });
 
-// 3. Configure modal ethereum client
 const ethereumClient = new EthereumClient(wagmiClient, chains);
 
 const Metamask = () => {
