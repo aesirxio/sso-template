@@ -5,7 +5,7 @@ import SignMessage from './sign';
 import { useAccount } from 'wagmi';
 import { WALLET_CONNECT_PROJECT_ID } from '../config';
 import { WagmiConfig, createClient, configureChains } from 'wagmi';
-import { EthereumClient, modalConnectors, walletConnectProvider } from '@web3modal/ethereum';
+import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum';
 import {
   arbitrum,
   arbitrumGoerli,
@@ -113,22 +113,13 @@ const chains = [
   zkSyncTestnet,
 ];
 
-const { provider } = configureChains(chains, [
-  walletConnectProvider({ WALLET_CONNECT_PROJECT_ID }),
-]);
-
+const { provider } = configureChains(chains, [w3mProvider({ WALLET_CONNECT_PROJECT_ID })]);
 const wagmiClient = createClient({
   autoConnect: true,
-  connectors: modalConnectors({
-    version: '1',
-    appName: 'web3Modal',
-    chains,
-    WALLET_CONNECT_PROJECT_ID,
-  }),
+  connectors: w3mConnectors({ WALLET_CONNECT_PROJECT_ID, version: 1, chains }),
   provider,
 });
 
-// 3. Configure modal ethereum client
 const ethereumClient = new EthereumClient(wagmiClient, chains);
 
 const Metamask = () => {
