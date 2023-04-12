@@ -41,18 +41,19 @@ const useWallet = (wallet, publicAddress) => {
       }
       throw false;
     } catch (error) {
-      toast(
-        <>
-          <p className="mb-1">Your wallet is not connected any AesirX account.</p>
-          <p className="mb-1">
-            Please register and connect{' '}
-            <a href="https://aesirx.io/" target="_blank">
-              here
-            </a>
-          </p>
-        </>,
-        { closeOnClick: false }
-      );
+      wallet !== 'concordium' &&
+        toast(
+          <>
+            <p className="mb-1">Your wallet is not connected any AesirX account.</p>
+            <p className="mb-1">
+              Please register and connect{' '}
+              <a href="https://aesirx.io/" target="_blank">
+                here
+              </a>
+            </p>
+          </>,
+          { closeOnClick: false }
+        );
       return false;
     }
   };
