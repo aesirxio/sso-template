@@ -94,7 +94,7 @@ const useWallet = (wallet, publicAddress) => {
         if (window.opener != null) {
           window.opener.postMessage(
             { walletResponse: queryString.stringify(data.result) },
-            window.location.origin
+            window.opener.origin
           );
         } else if (data?.result?.return) {
           const decoded = atob(data?.result?.return);
