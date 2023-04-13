@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 
 const Concordium = () => {
   return (
-    <WithWalletConnector network={process.env.NODE_ENV === 'development' ? MAINNET : MAINNET}>
+    <WithWalletConnector network={process.env.NODE_ENV === 'development' ? TESTNET : MAINNET}>
       {(props) => <ConcordiumApp {...props} />}
     </WithWalletConnector>
   );
@@ -48,7 +48,7 @@ const ConcordiumApp = (props) => {
         .then((hash) => {
           console.log('NODE_ENV', process.env.NODE_ENV);
 
-          if (process.env.NODE_ENV === 'development' && hash !== MAINNET.genesisHash) {
+          if (process.env.NODE_ENV === 'development' && hash !== TESTNET.genesisHash) {
             throw new Error(`Please change the network to Testnet in Wallet`);
           }
 
