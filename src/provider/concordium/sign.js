@@ -3,14 +3,16 @@ import logo from './../../images/concordium.png';
 import useWallet from '../../hook/useWallet';
 import { toast } from 'react-toastify';
 import { shortenString } from '../../utils/shortenString';
-import axios from 'axios';
 const SignMessageConcordium = ({ account, connection }) => {
   const [status, setStatus] = useState('');
   const [isAccountCreated, setIsAccountCreated] = useState(true);
   const [isCreating, setIsCreating] = useState(false);
   const wallet = 'concordium';
 
-  const { getWalletNonce, verifySignature } = useWallet(wallet, account);
+  const { getWalletNonce, verifySignature, getAesirXNonce, createAesirXAccount } = useWallet(
+    wallet,
+    account
+  );
 
   const handleConnect = async () => {
     setStatus('connect');
@@ -35,49 +37,22 @@ const SignMessageConcordium = ({ account, connection }) => {
   };
 
   const handleCreateAccount = async () => {
+    setIsCreating(true);
     try {
-      setIsCreating(true);
-      const nonce = (
-        await axios.post(
-          `${window.location.origin}/index.php?webserviceClient=site&webserviceVersion=1.0.0&option=reditem&view=item_wallet_requests_66&api=hal`,
-          { public_address: account, wallet: 'concordium' },
-          {
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          }
-        )
-      ).data?.nonce;
-
-      const signature = await connection.signMessage(account, String(nonce));
-      const signedNonce =
-        typeof signature === 'object' && signature !== null ? signature : JSON.parse(signature);
-      try {
-        const aesirXID = (
-          await axios.post(
-            `${window.location.origin}/index.php?webserviceClient=site&webserviceVersion=1.0.0&option=reditem&view=item_wallet_requests_66&task=validateSignature&api=hal`,
-            { public_address: account, wallet: 'concordium', signature: signedNonce },
-            {
-              headers: {
-                'Content-Type': 'application/json',
-              },
-            }
-          )
-        ).data?.result?.id;
+      const nonce = await getAesirXNonce(wallet, account);
+      if (nonce) {
+        const signature = await connection.signMessage(account, String(nonce));
+        const signedNonce =
+          typeof signature === 'object' && signature !== null ? signature : JSON.parse(signature);
+        const aesirXID = await createAesirXAccount(wallet, account, signedNonce);
         if (aesirXID) {
           setIsAccountCreated(true);
-          if (signedNonce) {
-            await verifySignature(wallet, account, signedNonce);
-          }
         }
-      } catch (error) {
-        toast(error.message);
       }
-      setIsCreating(false);
     } catch (error) {
-      setIsCreating(false);
-      throw error;
+      toast(error?.message);
     }
+    setIsCreating(false);
   };
   return (
     <>

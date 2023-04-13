@@ -41,19 +41,6 @@ const useWallet = (wallet, publicAddress) => {
       }
       throw false;
     } catch (error) {
-      wallet !== 'concordium' &&
-        toast(
-          <>
-            <p className="mb-1">Your wallet is not connected any AesirX account.</p>
-            <p className="mb-1">
-              Please register and connect{' '}
-              <a href="https://aesirx.io/" target="_blank">
-                here
-              </a>
-            </p>
-          </>,
-          { closeOnClick: false }
-        );
       return false;
     }
   };
@@ -91,24 +78,7 @@ const useWallet = (wallet, publicAddress) => {
       };
 
       const { data } = await axios(config);
-      if (data?.result) {
-        if (window.opener != null) {
-          window.opener.postMessage({ walletResponse: queryString.stringify(data.result) }, '*');
-        } else if (data?.result?.return) {
-          const decoded = atob(data?.result?.return);
-          window.location.href = `${withHttp(decoded)}`;
-        } else {
-          if (data?.result?.recirect_uri) {
-            window.location.href = `${withHttp(
-              data?.result?.recirect_uri
-            )}?state=sso&${queryString.stringify(data.result)}&lastVisitDate=0`;
-          } else {
-            throw false;
-          }
-        }
-      } else {
-        throw false;
-      }
+      postMessage(data);
     } catch (error) {
       toast(
         <>
@@ -126,7 +96,61 @@ const useWallet = (wallet, publicAddress) => {
     }
   };
 
-  return { getWalletNonce, verifySignature };
+  const createAesirXAccount = async (wallet, publicAddress, signedNonce) => {
+    try {
+      const response = await axios.post(
+        `${window.location.origin}/index.php?webserviceClient=site&webserviceVersion=1.0.0&option=reditem&view=item_wallet_requests_66&task=validateSignature&api=hal`,
+        { public_address: publicAddress, wallet: wallet, signature: signedNonce },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      postMessage(response?.data);
+      return response?.data?.result?.id;
+    } catch (error) {
+      toast(error.message);
+    }
+  };
+
+  const getAesirXNonce = async (wallet, publicAddress) => {
+    try {
+      const nonce = (
+        await axios.post(
+          `${window.location.origin}/index.php?webserviceClient=site&webserviceVersion=1.0.0&option=reditem&view=item_wallet_requests_66&api=hal`,
+          { public_address: publicAddress, wallet: wallet },
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        )
+      ).data?.nonce;
+      return nonce;
+    } catch (error) {
+      return false;
+    }
+  };
+
+  const postMessage = (data) => {
+    if (data?.result) {
+      if (window.opener != null) {
+        window.opener.postMessage({ walletResponse: queryString.stringify(data?.result) }, '*');
+      } else if (data?.result?.return) {
+        const decoded = atob(data?.result?.return);
+        window.location.href = `${withHttp(decoded)}`;
+      } else {
+        if (data?.result?.recirect_uri) {
+          window.location.href = `${withHttp(
+            data?.result?.recirect_uri
+          )}?state=sso&${queryString.stringify(data?.result)}&lastVisitDate=0`;
+        }
+      }
+    }
+  };
+
+  return { getWalletNonce, verifySignature, getAesirXNonce, createAesirXAccount };
 };
 
 export default useWallet;
