@@ -48,6 +48,7 @@ const SignMessageConcordium = ({ account, connection }) => {
         if (aesirXID) {
           setIsAccountCreated(true);
         }
+        await handleConnect();
       }
     } catch (error) {
       toast(error?.message);

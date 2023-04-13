@@ -136,7 +136,10 @@ const useWallet = (wallet, publicAddress) => {
   const postMessage = (data) => {
     if (data?.result) {
       if (window.opener != null) {
-        window.opener.postMessage({ walletResponse: queryString.stringify(data?.result) }, '*');
+        window.opener.postMessage(
+          { walletResponse: queryString.stringify(data?.result) },
+          document.referrer
+        );
       } else if (data?.result?.return) {
         const decoded = atob(data?.result?.return);
         window.location.href = `${withHttp(decoded)}`;

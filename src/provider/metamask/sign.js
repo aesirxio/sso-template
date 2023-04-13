@@ -24,6 +24,7 @@ const SignMessage = () => {
         if (aesirXID) {
           setIsAccountCreated(true);
         }
+        await handleSignMessage();
       } else {
         await verifySignature(wallet, address, data);
       }
