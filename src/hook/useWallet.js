@@ -92,10 +92,7 @@ const useWallet = (wallet, publicAddress) => {
       const { data } = await axios(config);
       if (data?.result) {
         if (window.opener != null) {
-          window.opener.postMessage(
-            { walletResponse: queryString.stringify(data.result) },
-            document.referrer
-          );
+          window.opener.postMessage({ walletResponse: queryString.stringify(data.result) }, '*');
         } else if (data?.result?.return) {
           const decoded = atob(data?.result?.return);
           window.location.href = `${withHttp(decoded)}`;
