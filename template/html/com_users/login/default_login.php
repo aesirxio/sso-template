@@ -66,15 +66,13 @@ $logo           = $params->get('logo');
 			{
 				$showRegularLogin = false;
 			}
+			$demoUser = $returnUri->getVar('demo_user');
+			$demoPassword = $returnUri->getVar('demo_password');
 		}
 
 		if ($showRegularLogin):
 		?>
 	<div class="txt_or my-3"><span class="font-inter fw-medium bg-white px-3 py-2 d-inline-block">OR</span></div>
-	<?php
-		$demoUser = $input->get('demo_user');
-		$demoPassword = $input->get('demo_password');
-	?>
 	<?php if($demoUser && $demoPassword): ?>
 		<div class="my-3">Demo account: <?php echo $demoUser ?> / <?php echo $demoPassword ?></div>
 	<?php endif; ?>
