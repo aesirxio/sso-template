@@ -74,7 +74,7 @@ $logo           = $params->get('logo');
 		?>
 	<div class="txt_or my-3"><span class="font-inter fw-medium bg-white px-3 py-2 d-inline-block">OR</span></div>
 	<?php if($demoUser && $demoPassword): ?>
-		<div class="my-3">Demo account: <?php echo $demoUser ?> / <?php echo $demoPassword ?></div>
+		<h4 class="fw-semibold my-3">Demo account: <?php echo $demoUser ?> / <?php echo $demoPassword ?></h4>
 	<?php endif; ?>
 	<form action="<?php echo JRoute::_('index.php?option=com_users&task=user.login'); ?>" method="post" class="form-validate form-horizontal well">
 		<fieldset>
