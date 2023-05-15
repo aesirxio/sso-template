@@ -54,7 +54,7 @@
     "dotenv": "^16.0.3",
     "filemanager-webpack-plugin": "^8.0.0",
     "fs": "^0.0.1-security",
-    "html-webpack-plugin": "^5.5.0",
+    "html-webpack-plugin": "^5.5.1",
     "html-webpack-skip-assets-plugin": "^1.0.3",
     "media-query-plugin": "^1.5.0",
     "mini-css-extract-plugin": "^2.7.2",
