@@ -57,7 +57,7 @@
     "html-webpack-plugin": "^5.5.1",
     "html-webpack-skip-assets-plugin": "^1.0.3",
     "media-query-plugin": "^1.5.0",
-    "mini-css-extract-plugin": "^2.7.2",
+    "mini-css-extract-plugin": "^2.7.6",
     "postcss": "^8.4.21",
     "postcss-loader": "^7.0.2",
     "prettier": "^2.8.4",
