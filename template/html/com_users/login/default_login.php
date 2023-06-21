@@ -94,7 +94,7 @@ $logo           = $params->get('logo');
 					</div>
 				</div>
 			<?php endif; ?>
-			<p>Don't have an account? Register <a href="https://aesirx.io/" target="_blank">here</a></p>
+			<p>Don't have an account? Register <a href="https://web3id.aesirx.io/#switching-form" target="_blank">here</a></p>
 			<div class="control-group mb-0">
 				<div class="controls">
 					<button type="submit" class="btn btn-success bg-success text-white text-uppercase fw-bold">
