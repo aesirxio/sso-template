@@ -1,4 +1,4 @@
-# AesirX template
-AesirX SSO template
+# AesirX SSO Joomla template
 
-## How it works
+
+

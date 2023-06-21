@@ -19,7 +19,7 @@ export const MAINNET = {
   ccdScanBaseUrl: 'https://ccdscan.io',
 };
 
-export const WALLET_CONNECT_PROJECT_ID = '76324905a70fe5c388bab46d3e0564dc';
+export const WALLET_CONNECT_PROJECT_ID = '370a8cce4ae011cc55e4a8391e20374d';
 export const WALLET_CONNECT_OPTS = {
   projectId: WALLET_CONNECT_PROJECT_ID,
   metadata: {
