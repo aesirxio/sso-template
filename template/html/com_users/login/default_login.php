@@ -40,7 +40,7 @@ $logo           = $params->get('logo');
 	<?php endif; ?>
 	<h1 class="fw-semibold">
 		Welcome to<div class="logo-login"><div class="custom"><img src="<?php echo $this->baseurl; ?>/<?php echo htmlspecialchars($logo, ENT_QUOTES); ?>"  alt="<?php echo htmlspecialchars($this->params->get('sitetitle')); ?>" /></div></div>SSO
-		<br/>Sign In to getting started.
+		<br/>Sign in to get started.
 	</h1>
 	<div class="login">
 	<div class="masklogin" id="providerlogin">
