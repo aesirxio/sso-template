@@ -31,8 +31,9 @@ require('dotenv').config();
 module.exports = (env, argv) => {
   if (env != undefined && env.deploy) {
     process.env = {
-      wwwDir: wwwDir,
-      projectname: projectname,
+      ...process.env,
+      wwwDir,
+      projectname,
     };
 
     var templatePath = process.env.wwwDir;
@@ -44,7 +45,13 @@ module.exports = (env, argv) => {
     entry: entryData,
     plugins: [
       new DefinePlugin({
-        process: { env: JSON.stringify(process.env) },
+        process: {
+          env: {
+            REACT_APP_SSO_CONCORDIUM_NETWORK: process.env.REACT_APP_SSO_CONCORDIUM_NETWORK,
+            REACT_APP_SSO_CLIENT_ID: process.env.REACT_APP_SSO_CLIENT_ID,
+            REACT_APP_SSO_CLIENT_SECRET: process.env.REACT_APP_SSO_CLIENT_SECRET,
+          },
+        },
       }),
       new HtmlWebpackPlugin({
         inject: false,
