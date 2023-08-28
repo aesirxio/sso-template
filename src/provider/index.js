@@ -1,26 +1,28 @@
 import React from 'react';
 import { SSOButton } from 'aesirx-sso';
 import queryString from 'query-string';
+import { Buffer } from 'buffer';
 
 const withHttp = (url) => (!/^https?:\/\//i.test(url) ? `https://${url}` : url);
 
 const ProviderLogin = () => {
   const onGetData = async (response) => {
-   
+    const urlParams = new URLSearchParams(window.location.search);
+
     if (response.error) {
       notify(response.error_description, 'error');
     } else {
       if (response?.return) {
         const decoded = atob(response?.return);
         window.location.href = `${withHttp(decoded)}`;
+      } else if (response?.recirect_uri) {
+        window.location.href = `${withHttp(
+          data?.result?.recirect_uri
+        )}?state=sso&${queryString.stringify(data.result)}&lastVisitDate=0`;
+      } else if (urlParams.get('return')) {
+        window.location.href = Buffer.from(urlParams.get('return'), 'base64').toString();
       } else {
-        if (response?.recirect_uri) {
-          window.location.href = `${withHttp(
-            data?.result?.recirect_uri
-          )}?state=sso&${queryString.stringify(data.result)}&lastVisitDate=0`;
-        } else {
-          window.location.href = '/';
-        }
+        window.location.href = '/';
       }
     }
   };
