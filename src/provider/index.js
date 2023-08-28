@@ -1,33 +1,37 @@
 import React from 'react';
-import Metamask from './metamask';
+import { SSOButton } from 'aesirx-sso';
+import queryString from 'query-string';
 
-import Concordium from './concordium';
-import ToastComponent from '../components/Toast';
+const withHttp = (url) => (!/^https?:\/\//i.test(url) ? `https://${url}` : url);
 
 const ProviderLogin = () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  let login = ['concordium', 'metamask', 'regular'];
-
-  if (urlParams.has('return')) {
-    login = new URL(atob(urlParams.get('return'))).searchParams.getAll('login[]');
-  }
-
-  const hasMetamask = login.length === 0 || login.includes('metamask');
-  const hasConcordium = login.length === 0 || login.includes('concordium');
+  const onGetData = async (response) => {
+   
+    if (response.error) {
+      notify(response.error_description, 'error');
+    } else {
+      if (response?.return) {
+        const decoded = atob(response?.return);
+        window.location.href = `${withHttp(decoded)}`;
+      } else {
+        if (response?.recirect_uri) {
+          window.location.href = `${withHttp(
+            data?.result?.recirect_uri
+          )}?state=sso&${queryString.stringify(data.result)}&lastVisitDate=0`;
+        } else {
+          window.location.href = '/';
+        }
+      }
+    }
+  };
 
   return (
     <>
-      {hasMetamask && (
-        <div className="control-group mb-3">
-          <Metamask />
-        </div>
-      )}
-      {hasConcordium && (
-        <div className="control-group mb-3">
-          <Concordium />
-        </div>
-      )}
-      <ToastComponent />
+      <SSOButton
+        className="btn-primary btn w-100 fw-bold position-relative d-flex align-item-center justify-content-center my-3  px-6"
+        text="AesirX SSO"
+        onGetData={onGetData}
+      />
     </>
   );
 };

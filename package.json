@@ -24,6 +24,7 @@
     "@web3modal/react": "^2.1.2",
     "@web3modal/standalone": "^2.1.2",
     "aesirx-dma-lib": "^1.7.12",
+    "aesirx-sso": "^1.2.2",
     "bootstrap": "^5.2.3",
     "ethers": "^5",
     "react": "^18.2.0",

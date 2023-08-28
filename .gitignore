@@ -53,3 +53,5 @@ dist/*
 .env
 *.code-workspace
 yarn-error.log
+.yalc
+yalc.lock
