@@ -46,11 +46,12 @@ module.exports = (env, argv) => {
     plugins: [
       new DefinePlugin({
         process: {
-          env: {
+          env: JSON.stringify({
             REACT_APP_SSO_CONCORDIUM_NETWORK: process.env.REACT_APP_SSO_CONCORDIUM_NETWORK,
+            REACT_APP_ENDPOINT_URL: process.env.REACT_APP_ENDPOINT_URL,
             REACT_APP_SSO_CLIENT_ID: process.env.REACT_APP_SSO_CLIENT_ID,
             REACT_APP_SSO_CLIENT_SECRET: process.env.REACT_APP_SSO_CLIENT_SECRET,
-          },
+          }),
         },
       }),
       new HtmlWebpackPlugin({
