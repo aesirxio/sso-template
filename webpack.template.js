@@ -6,8 +6,6 @@ const WebpackAssetsManifest = require('webpack-assets-manifest');
 const FileManagerPlugin = require('filemanager-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const RealFaviconPlugin = require('aesirxio-template-library/real-favicon-webpack-plugin');
-const HtmlWebpackSkipAssetsPlugin =
-  require('html-webpack-skip-assets-plugin').HtmlWebpackSkipAssetsPlugin;
 const TerserPlugin = require('terser-webpack-plugin');
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const FontPreloadPlugin = require('webpack-font-preload-plugin');
@@ -87,7 +85,6 @@ module.exports = (env, argv) => {
         templateParameters: process.env,
         minify: false,
       }),
-      new HtmlWebpackSkipAssetsPlugin(),
       new FileManagerPlugin({
         events: {
           onEnd: {
