@@ -2731,10 +2731,10 @@ aes-js@^3.1.2:
   resolved "https://registry.yarnpkg.com/aes-js/-/aes-js-3.1.2.tgz#db9aabde85d5caabbfc0d4f2a4446960f627146a"
   integrity sha512-e5pEa2kBnBOgR4Y/p20pskXI74UEz7de8ZGVo58asOtvSVG5YAbJeELPZxOmt+Bnz3rX753YKhfIn4X4l1PPRQ==
 
-aesirx-sso@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/aesirx-sso/-/aesirx-sso-1.2.2.tgz#e881a5ead766efa8f98e7d6fb23694ddeb311e90"
-  integrity sha512-3bAMZeyOxPJUa+eLUT029N74/ayJYMinurMeHsALVIylKm1hTL0Pq7mhV5RG95J/Dl5jU4UWwbdZFLyx9oBpfw==
+aesirx-sso@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/aesirx-sso/-/aesirx-sso-1.2.3.tgz#94bf7f472836ac053ef27c1583b1ff15415debbd"
+  integrity sha512-xBu9duw4NfrrLhdpblhAbVyi+h66ctqW30StC6gkAV1+dOY3jsTxNh/sF5KcYW/LnCr/qJ+CoBzYPREzmGeNIg==
   dependencies:
     "@concordium/react-components" "^0.3.0"
     "@wagmi/core" "^1.3.8"

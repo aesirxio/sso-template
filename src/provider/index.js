@@ -7,20 +7,16 @@ const withHttp = (url) => (!/^https?:\/\//i.test(url) ? `https://${url}` : url);
 
 const ProviderLogin = () => {
   const onGetData = async (response) => {
-    const urlParams = new URLSearchParams(window.location.search);
-
     if (response.error) {
       notify(response.error_description, 'error');
     } else {
       if (response?.return) {
-        const decoded = atob(response?.return);
+        const decoded = Buffer.from(response?.return, 'base64').toString();
         window.location.href = `${withHttp(decoded)}`;
       } else if (response?.recirect_uri) {
         window.location.href = `${withHttp(
           data?.result?.recirect_uri
         )}?state=sso&${queryString.stringify(data.result)}&lastVisitDate=0`;
-      } else if (urlParams.get('return')) {
-        window.location.href = Buffer.from(urlParams.get('return'), 'base64').toString();
       } else {
         window.location.href = '/';
       }
