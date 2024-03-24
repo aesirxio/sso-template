@@ -47,7 +47,7 @@
     "html-webpack-plugin": "^5.5.1",
     "media-query-plugin": "^1.5.0",
     "mini-css-extract-plugin": "^2.7.2",
-    "postcss": "^8.4.21",
+    "postcss": "^8.4.31",
     "postcss-loader": "^7.0.2",
     "prettier": "^2.8.4",
     "sass": "^1.60.0",
